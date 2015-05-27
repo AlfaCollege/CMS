@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    <? require("upload.php");
+    ?>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,7 +45,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.php">WaterGoldFish</a>
+            <a class="navbar-brand" href="index.php">WGF</a>
         </div>
         <!-- Top Menu Items -->
         <ul class="nav navbar-right top-nav">
@@ -70,17 +72,17 @@
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
-                <li class="active">
+                <li>
                     <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                 </li>
                 <li>
                     <a href="reserveringen.php"><i class=" glyphicon glyphicon-credit-card"></i> Reserveringen</a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="menu.php"><i class="glyphicon glyphicon-pushpin"></i> Menu</a>
                 </li>
                 <li>
-                    <a href="pagina.php"><i class="fa fa-file-text-o"></i> Pagina's</a>
+                    <a href="pagina.php"><i class=" fa fa-file-text-o"></i> Pagina's</a>
                 </li>
 
 
@@ -111,36 +113,62 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        WaterGoldFish
-                        <small>Content management system</small>
+                        Menu
                     </h1>
-                            <div class="col-md-8">
-                                <div class="panel panel-primary">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title">
-                                            <span class="glyphicon glyphicon-bookmark"></span> Quick Shortcuts</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-xs-12 col-md-12">
-                                                <a href="#" class="btn btn-danger btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br/>Gasten</a>
-                                                <a href="#" class="btn btn-warning btn-lg" role="button"><span class="glyphicon glyphicon-bookmark"></span> <br/>Menu</a>
-                                                <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br/>Gebruikers</a>
-                                                <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br/>Pagina's</a>
-                                            </div>
-                                            <div class="col-xs-12 col-md-12">
-                                                <a href="#" class="btn btn-info btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br/>Notes</a>
-                                                <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-picture"></span> <br/>Photos</a>
-                                                <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-tag"></span> <br/>Tags</a>
-                                            </div>
-                                        </div>
-                                        <a href="#" class="btn btn-success btn-lg btn-block" role="button"><span class="glyphicon glyphicon-globe"></span> Website</a>
-                                    </div>
-                                </div>
-                            </div>
+                </div>
+                    <div class="row clearfix">
+                        <div class="col-md-12 table-responsive">
+                            <table class="table table-bordered table-hover table-sortable" id="tab_logic">
+                                <thead>
+                                <tr >
+                                    <th class="text-center">
+                                        Image
+                                    </th>
+                                    <th class="text-center">
+                                        Item naam
+                                    </th>
+                                    <th class="text-center">
+                                        Prijs
+                                    </th>
+                                    <th class="text-center">
+                                        Beschrijving
+                                    </th>
+                                    <th class="text-center">
+                                        Option
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr id='addr0' data-id="0" class="hidden">
+                                    <td data-name="prijs">
+
+
+                                    </td>
+                                    <td data-name="name">
+                                        <input type="text" name='item' placeholder='Item' class="form-control"/>
+                                    </td>
+                                    <td data-name="prijs">
+                                        <span class="input-symbol-euro">
+                                            <input type="text" />
+                                   </span>
+                                    </td>
+                                    <td data-name="desc">
+                                        <textarea  name="desc" placeholder="Beschrijving" class="form-control"></textarea>
+                                    </td>
+                                    <td data-name="save">
+                                        <button name="save" class="btn btn-info">Opslaan</button>
+                                    </td>
+                                    <td data-name="del">
+                                        <button name="del0" class='btn btn-danger btn-danger row-remove'>verwijderen</button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
+                    <a id="add_row" class="btn btn-default pull-right">Item Toevoegen</a>
                 </div>
+
             </div>
             <!-- /.row -->
 
@@ -154,11 +182,13 @@
 <!-- /#wrapper -->
 
 <!-- jQuery -->
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 <script src="js/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
-
+<!-- menu js -->
+<script src="js/menu.js"></script>
 </body>
 
 </html>

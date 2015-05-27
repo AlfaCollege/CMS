@@ -80,24 +80,12 @@
                     <a href="menu.php"><i class="glyphicon glyphicon-pushpin"></i> Menu</a>
                 </li>
                 <li>
-                    <a href="pagina.php"><i class="fa fa-file-text-o"></i> Pagina's</a>
+                    <a href="Pagina.php"><i class="fa fa-file-text-o"></i> Pagina's</a>
                 </li>
 
 
-                <!--<li>
-                    <a href="#"><i class="fa fa-fw fa-edit"></i> Forms</a>
-                </li>
-                <li>
-                    <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
-                    <ul id="demo" class="collapse">
-                        <li>
-                            <a href="#">Dropdown Item</a>
-                        </li>
-                        <li>
-                            <a href="#">Dropdown Item</a>
-                        </li>-->
-                    </ul>
-                </li>
+            </ul>
+            </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -114,41 +102,31 @@
                         WaterGoldFish
                         <small>Content management system</small>
                     </h1>
-                            <div class="col-md-8">
-                                <div class="panel panel-primary">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title">
-                                            <span class="glyphicon glyphicon-bookmark"></span> Quick Shortcuts</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-xs-12 col-md-12">
-                                                <a href="#" class="btn btn-danger btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br/>Gasten</a>
-                                                <a href="#" class="btn btn-warning btn-lg" role="button"><span class="glyphicon glyphicon-bookmark"></span> <br/>Menu</a>
-                                                <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br/>Gebruikers</a>
-                                                <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br/>Pagina's</a>
-                                            </div>
-                                            <div class="col-xs-12 col-md-12">
-                                                <a href="#" class="btn btn-info btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br/>Notes</a>
-                                                <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-picture"></span> <br/>Photos</a>
-                                                <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-tag"></span> <br/>Tags</a>
-                                            </div>
-                                        </div>
-                                        <a href="#" class="btn btn-success btn-lg btn-block" role="button"><span class="glyphicon glyphicon-globe"></span> Website</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <div id="sample">
+                        <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> <script type="text/javascript">
+                            //<![CDATA[
+                            bkLib.onDomLoaded(function() {
+                                new nicEditor({fullPanel : true}).panelInstance('area2');;
+                            });
+                            //]]>
+                        </script>
+                        <h4>
+                            Edit hier je pagina's
+                        </h4>
+                        <textarea cols="100" rows="25" id="area2">
+                         Typ hier
+                        </textarea>
+
             </div>
-            <!-- /.row -->
-
         </div>
-        <!-- /.container-fluid -->
-
     </div>
-    <!-- /#page-wrapper -->
+    <!-- /.row -->
+
+</div>
+<!-- /.container-fluid -->
+
+</div>
+<!-- /#page-wrapper -->
 
 </div>
 <!-- /#wrapper -->
