@@ -60,25 +60,26 @@
                         <input type="search" class="form-control" id="input-search" placeholder="Search Attendees..." >
                     </div>
                     <div class="searchable-container">
-                        <div class="items col-xs-12 col-sm-6 col-md-6 col-lg-6 clearfix">
-                            <div class="info-block block-info clearfix">
-                                <h4>Naam: Wouter Stulp</h4>
-                                <p>Recenties: Dit is een goed restaurant</p>
+                        <?php
+
+                        $db = new PDO("mysql:host=127.0.0.1;dbname=CMS","root","root");
+
+                        $sql = "SELECT * FROM Recenties";
+                        $stmt = $db->prepare($sql);
+                        $stmt->execute();
+
+                        while ($arr = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                            ?>
+                            <div class="items col-xs-12 col-sm-6 col-md-6 col-lg-6 clearfix">
+                                <div class="info-block block-info clearfix">
+                                    <h4>Naam: <?php echo $arr['Naam']; ?></h4>
+                                    <p>Recenties: <?php echo $arr['Recentie']; ?></p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="items col-xs-12 col-sm-12 col-md-6 col-lg-6 clearfix">
-                            <div class="info-block block-info clearfix">
-                                <h4>Naam: Martin Elderman</h4>
-                                <p>Recentie: De biefstuk is chill</p>
-                            </div>
-                        </div>
-                        <div class="items col-xs-12 col-sm-12 col-md-6 col-lg-6 clearfix">
-                            <div class="info-block block-info clearfix">
-                                <h4>Naam: Berwout Kruit</h4>
-                                <p>Recentie: Eten was lekker</p>
-                            </div>
-                        </div>
-                        </div>
+
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
