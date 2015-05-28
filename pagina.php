@@ -64,7 +64,18 @@
                             Edit hier je pagina's
                         </h4>
                         <textarea cols="100" rows="25" id="area2">
-                         Typ hier
+                         <?php
+
+                         $db = new PDO("mysql:host=localhost;dbname=CMS","admin","admin");
+
+                         $sql = "SELECT * FROM Content";
+                         $stmt = $db->prepare($sql);
+                         $stmt->execute();
+
+                         while ($arr = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                             echo $arr['Text'];
+                         }
+                         ?>
                         </textarea>
 
             </div>
