@@ -17,6 +17,9 @@
     <!-- Custom CSS -->
     <link href="css/default.css" rel="stylesheet">
 
+    <!-- Recenties CSS -->
+    <link href="css/recenties.css" rel="stylesheet">
+
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -120,27 +123,18 @@
                     <div class="searchable-container">
                         <div class="items col-xs-12 col-sm-6 col-md-6 col-lg-6 clearfix">
                             <div class="info-block block-info clearfix">
-                                <div class="square-box pull-left">
-                                    <span class="glyphicon glyphicon-user glyphicon-lg"></span>
-                                </div>
                                 <h4>Naam: Wouter Stulp</h4>
                                 <p>Recenties: Dit is een goed restaurant</p>
                             </div>
                         </div>
                         <div class="items col-xs-12 col-sm-12 col-md-6 col-lg-6 clearfix">
                             <div class="info-block block-info clearfix">
-                                <div class="square-box pull-left">
-                                    <span class="glyphicon glyphicon-user glyphicon-lg"></span>
-                                </div>
                                 <h4>Naam: Martin Elderman</h4>
-                                <p>Recentie: Dit was een kut restaurant</p>
+                                <p>Recentie: De biefstuk is chill</p>
                             </div>
                         </div>
                         <div class="items col-xs-12 col-sm-12 col-md-6 col-lg-6 clearfix">
                             <div class="info-block block-info clearfix">
-                                <div class="square-box pull-left">
-                                    <span class="glyphicon glyphicon-user glyphicon-lg"></span>
-                                </div>
                                 <h4>Naam: Berwout Kruit</h4>
                                 <p>Recentie: Eten was lekker</p>
                             </div>
