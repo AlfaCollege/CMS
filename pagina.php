@@ -18,7 +18,7 @@
     <link href="css/default.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -64,9 +64,21 @@
                             Edit hier je pagina's
                         </h4>
                         <textarea cols="100" rows="25" id="area2">
-                         Typ hier
-                        </textarea>
+                         <?php
 
+                         $db = new PDO("mysql:host=localhost;dbname=CMS","root","root");
+
+                         $sql = "SELECT * FROM Content";
+                         $stmt = $db->prepare($sql);
+                         $stmt->execute();
+
+                         while ($arr = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                             echo $arr['Text'];
+                         }
+                         ?>
+                        </textarea>
+                        <br>
+                        <button class="btn btn-success">upload</button>
             </div>
         </div>
     </div>

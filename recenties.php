@@ -22,7 +22,7 @@
     <link href="css/recenties.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -57,7 +57,7 @@
                         <small>Content management system</small>
                     </h1>
                     <div class="col-lg-12">
-                        <input type="search" class="form-control" id="input-search" placeholder="Search Attendees..." >
+                        <input type="search" class="form-control" id="input-search" placeholder="Zoek recenties" >
                     </div>
                     <div class="searchable-container">
                         <?php
@@ -69,11 +69,20 @@
                         $stmt->execute();
 
                         while ($arr = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                            if($arr['Akkoord'] == 0) {
+                                $recenties_kleur = "red";
+                            } else {
+                                $recenties_kleur = "green";
+                            }
                             ?>
                             <div class="items col-xs-12 col-sm-6 col-md-6 col-lg-6 clearfix">
-                                <div class="info-block block-info clearfix">
+                                <div class="info-block block-info clearfix" style="background-color:<?php echo $recenties_kleur; ?>">
                                     <h4>Naam: <?php echo $arr['Naam']; ?></h4>
-                                    <p>Recenties: <?php echo $arr['Recentie']; ?></p>
+                                    <div class="caption-full"><p>Recentie: <?php echo $arr['Recentie']; ?></p></div>
+                                    <p>Rating: <?php echo $arr['Rating']?></p>
+                                    <button class="btn btn-success">Accepteren</button>
+                                    <button class="btn btn-danger">Afwijzen</button>
+
                                 </div>
                             </div>
 
