@@ -42,7 +42,7 @@
                                 <div class="checkbox">
                                     <label>
                                         <input type="checkbox" />
-                                        Remember Me
+                                        Mij Onthouden
                                     </label>
                                 </div>
                             </div>

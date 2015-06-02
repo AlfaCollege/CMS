@@ -18,7 +18,7 @@
     <link href="css/default.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -34,60 +34,10 @@
 <div id="wrapper">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.php">WaterGoldFish</a>
-        </div>
-        <!-- Top Menu Items -->
-        <ul class="nav navbar-right top-nav">
-
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Welkom Gebruiker<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#"><i class="fa fa-cutlery"></i> Het Witte Paard</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#"><i class="glyphicon glyphicon-knight"></i> Wobbesheerd</a>
-
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav side-nav">
-                <li class="active">
-                    <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-                </li>
-                <li>
-                    <a href="reserveringen.php"><i class=" glyphicon glyphicon-credit-card"></i> Reserveringen</a>
-                </li>
-                <li>
-                    <a href="menu.php"><i class="glyphicon glyphicon-pushpin"></i> Menu</a>
-                </li>
-                <li>
-                    <a href="Pagina.php"><i class="fa fa-file-text-o"></i> Pagina's</a>
-                </li>
-
-
-            </ul>
-            </li>
-            </ul>
-        </div>
+    <?php
+    $currentpage = "pagina";
+    require_once 'assets/header.php';
+    ?>
         <!-- /.navbar-collapse -->
     </nav>
 
@@ -114,9 +64,21 @@
                             Edit hier je pagina's
                         </h4>
                         <textarea cols="100" rows="25" id="area2">
-                         Typ hier
-                        </textarea>
+                         <?php
 
+                         $db = new PDO("mysql:host=localhost;dbname=CMS","root","root");
+
+                         $sql = "SELECT * FROM Content";
+                         $stmt = $db->prepare($sql);
+                         $stmt->execute();
+
+                         while ($arr = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                             echo $arr['Text'];
+                         }
+                         ?>
+                        </textarea>
+                        <br>
+                        <button class="btn btn-success">upload</button>
             </div>
         </div>
     </div>
