@@ -6,6 +6,11 @@
 */
 header('Content-type: application/JSON');
 
+$db = new PDO('mysql:dbname=CMS;host=127.0.0.1', 'root', 'root');
+
+$query = 'SELECT * FROM Images ';
+$first = false;
+
 if (!empty($_GET)){
 	//
 	//We hebben parameters gekregen
@@ -13,11 +18,24 @@ if (!empty($_GET)){
 		//
 		//SELECT IMAGES WITH ID $_GET['id']
 		//query += WHERE ID = $_GET['id']
+		if ($first == false){
+			$query .= 'WHERE ID = :ID ';
+			$first = true;
+		} else {
+			$query .= 'AND ID = :ID ';
+		}
+
 	}
 
 	if (isset($_GET['location']) && !empty($_GET['location'])){
 		//
 		//query += AND location = $_GET['location']
+		if ($first == false){
+			$query .= 'WHERE Locatie = :LOC ';
+			$first = true;
+		} else {
+			$query .= 'AND Locatie = :LOC ';
+		}
 	} else {
 		//
 		//Geen locatie dus gooi een fout melding
@@ -28,6 +46,34 @@ if (!empty($_GET)){
 				]
 			));
 	}
+
+	//
+	//Haal de data binnen anders geef niks terug.
+		$data = $db->prepare($query);
+		if (isset($_GET['id'])){
+			$data->execute(['LOC' => $_GET['location'], 'ID' => $_GET['id']]);
+		} else {
+			$data->execute(['LOC' => $_GET['location']]);
+		}
+
+		$data = $data->fetchAll();
+		//var_dump($query);
+		//var_dump($data);
+
+		$json_data;
+		$count = 0;
+		$json_data[$count] = $count;
+		$count++;
+
+		foreach($data as $image){
+			$json_data[$count] = [$image['ID'], $image['Path'], $image['Locatie']];
+			$count++;
+		}
+		$count--;
+		$json_data[0] = $count;
+		
+		die(json_encode($json_data));
+	
 } else {
 	//
 	//Niks gekregen
