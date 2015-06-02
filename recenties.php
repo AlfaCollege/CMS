@@ -70,15 +70,15 @@
 
                         while ($arr = $stmt->fetch(PDO::FETCH_ASSOC)) {
                             if($arr['Akkoord'] == 0) {
-                                $recenties_kleur = "red";
+                                $recenties_kleur = "#F2DEDE";
                             } else {
-                                $recenties_kleur = "green";
+                                $recenties_kleur = "#DFF0D8";
                             }
                             ?>
                             <div class="items col-xs-12 col-sm-6 col-md-6 col-lg-6 clearfix">
                                 <div class="info-block block-info clearfix" style="background-color:<?php echo $recenties_kleur; ?>">
                                     <h4>Naam: <?php echo $arr['Naam']; ?></h4>
-                                    <div class="caption-full"><p>Recentie: <?php echo $arr['Recentie']; ?></p></div>
+                                    <p>Recentie: <?php echo $arr['Recentie']; ?></p>
                                     <p>Rating: <?php echo $arr['Rating']?></p>
                                     <button class="btn btn-success">Accepteren</button>
                                     <button class="btn btn-danger">Afwijzen</button>
