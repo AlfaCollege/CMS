@@ -57,7 +57,7 @@
                         <small>Content management system</small>
                     </h1>
                     <div class="col-lg-12">
-                        <input type="search" class="form-control" id="input-search" placeholder="Search Attendees..." >
+                        <input type="search" class="form-control" id="input-search" placeholder="Zoek recenties" >
                     </div>
                     <div class="searchable-container">
                         <?php
@@ -73,7 +73,11 @@
                             <div class="items col-xs-12 col-sm-6 col-md-6 col-lg-6 clearfix">
                                 <div class="info-block block-info clearfix">
                                     <h4>Naam: <?php echo $arr['Naam']; ?></h4>
-                                    <p>Recenties: <?php echo $arr['Recentie']; ?></p>
+                                    <p>Recentie: <?php echo $arr['Recentie']; ?></p>
+                                    <p>Rating: <?php echo $arr['Rating']?></php></p>
+                                    <button class="btn btn-success">Accepteren</button>
+                                    <button class="btn btn-danger">Afwijzen</button>
+
                                 </div>
                             </div>
 

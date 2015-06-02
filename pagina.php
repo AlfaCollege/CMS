@@ -66,7 +66,7 @@
                         <textarea cols="100" rows="25" id="area2">
                          <?php
 
-                         $db = new PDO("mysql:host=localhost;dbname=CMS","admin","admin");
+                         $db = new PDO("mysql:host=localhost;dbname=CMS","root","root");
 
                          $sql = "SELECT * FROM Content";
                          $stmt = $db->prepare($sql);
