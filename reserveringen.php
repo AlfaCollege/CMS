@@ -18,7 +18,7 @@
     <link href="css/default.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="fonts/font-awesome/css/font-awesome.min.csss" rel="stylesheet" type="text/css">
+    <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
