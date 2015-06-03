@@ -1,3 +1,28 @@
 .form-control {
     margin-bottom: 10px;
 }
+
+.info-block.block-info.clearfix {
+    border-radius: 5px;
+}
+
+.info-block.block-info.clearfix h4 {
+    margin-left: 10px;
+}
+
+.info-block.block-info.clearfix p {
+    margin-left: 10px;
+}
+
+.btn.btn-success {
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.btn.btn-danger {
+    margin-bottom: 10px;
+}
+
+.alert.alert-success {
+    padding: 0;
+}
