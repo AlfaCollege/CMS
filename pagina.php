@@ -52,36 +52,48 @@
                         WaterGoldFish
                         <small>Content management system</small>
                     </h1>
-                    <div id="sample">
-                        <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> <script type="text/javascript">
-                            //<![CDATA[
-                            bkLib.onDomLoaded(function() {
-                                new nicEditor({fullPanel : true}).panelInstance('area2');;
-                            });
-                            //]]>
-                        </script>
-                        <h4>
-                            Edit hier je pagina's
-                        </h4>
-                        <textarea cols="100" rows="25" id="area2">
-                         <?php
+                        <textarea class="ckeditor" name="editor1">
+                            <?php
 
-                         $db = new PDO("mysql:host=localhost;dbname=CMS","root","root");
+                            $db = new PDO("mysql:host=127.0.0.1;dbname=CMS","root","root");
 
-                         $sql = "SELECT * FROM Content";
-                         $stmt = $db->prepare($sql);
-                         $stmt->execute();
+                            $sql = "SELECT * FROM Content";
+                            $stmt = $db->prepare($sql);
+                            $stmt->execute();
 
-                         while ($arr = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                             echo $arr['Text'];
-                         }
-                         ?>
+                            while ($arr = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+                                echo $arr['Text'];
+
+                                ?>
+
+
+
+                            <?php
+                            }
+                            ?>
                         </textarea>
-                        <br>
-                        <button class="btn btn-success">upload</button>
+                    <div class="pull-right">
+                        <?php
+                            $db = new PDO("mysql:host=127.0.0.1;dbname=CMS","root","root" );
+
+                            $sql = "SELECT * FROM Content";
+                            $stmt = $db->prepare($sql);
+                            $stmt->execute();
+
+                            while ($arr = $stmt->fetch(PDO::FETCH_ASSOC)){
+
+                                echo $arr['Locatie'];
+                            }
+                        ?>
+                    </div>
+                    <button name="upload" type="submit" class="btn btn-success">Upload</button>
+                        <?php
+
+                        ?>
+
+                </div>
             </div>
-        </div>
-    </div>
     <!-- /.row -->
 
 </div>
@@ -98,7 +110,7 @@
 
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
-
+<script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
 </body>
 
 </html>
