@@ -52,6 +52,7 @@
                         WaterGoldFish
                         <small>Content management system</small>
                     </h1>
+                    <form method="post">
                         <textarea class="ckeditor" name="editor1">
                             <?php
 
@@ -73,24 +74,17 @@
                             }
                             ?>
                         </textarea>
-                    <div class="pull-right">
-                        <?php
-                            $db = new PDO("mysql:host=127.0.0.1;dbname=CMS","root","root" );
-
-                            $sql = "SELECT * FROM Content";
+                        <input class="btn btn-success" type="submit" name="update" value="Update">
+                    <?php
+                        if(isset( $_POST['update'])){
+                            $sql = "UPDATE Content SET Text = '" . mysql_escape_string($_POST['editor1']) . "';";
                             $stmt = $db->prepare($sql);
                             $stmt->execute();
 
-                            while ($arr = $stmt->fetch(PDO::FETCH_ASSOC)){
-
-                                echo $arr['Locatie'];
-                            }
-                        ?>
-                    </div>
-                    <button name="upload" type="submit" class="btn btn-success">Upload</button>
-                        <?php
-
-                        ?>
+                            echo '<meta http-equiv="refresh" content="0" />';
+                        }
+                    ?>
+                    </form>
 
                 </div>
             </div>

@@ -77,9 +77,9 @@
                             ?>
                             <div class="items col-xs-12 col-sm-6 col-md-6 col-lg-6 clearfix">
                                 <div class="info-block block-info clearfix" style="background-color:<?php echo $recenties_kleur; ?>">
-                                    <h4>Naam: <?php echo $arr['Naam']; ?></h4>
-                                    <p>Recentie: <?php echo $arr['Recentie']; ?></p>
-                                    <p>Rating: <?php echo $arr['Rating']?></p>
+                                    <div class="col-md-12" <h4>Naam: <?php echo $arr['Naam']; ?></h4></div>
+                                    <div class="col-md-12" <p>Recentie: <?php echo $arr['Recentie']; ?></p></div>
+                                    <div class="col-md-5 pull-right" <p>Rating: <?php echo $arr['Rating']?></p></div>
                                     <button class="btn btn-success">Accepteren</button>
                                     <button class="btn btn-danger">Afwijzen</button>
 
