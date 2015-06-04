@@ -89,13 +89,31 @@
                                     <div class="col-md-12" <h4>Naam: <?php echo $arr['Naam']; ?></h4></div>
                                     <div class="col-md-12" <p>Recentie: <?php echo $arr['Recentie']; ?></p></div>
                                     <div class="col-md-12" <p>Rating: <?php echo $arr['Rating']?></p></div>
-                                    <button class="btn btn-success">Accepteren</button>
-                                    <button class="btn btn-danger">Afwijzen</button>
+                                    <form method="POST">
+                                        <button class="btn btn-success" type="submit" name="accept">Accepteren</button>
+                                        <button class="btn btn-danger" type="submit" name="decline">Afwijzen</button>
+                                        <input type="hidden" name="ID" value="<?php echo $arr['ID']; ?>" >
+                                        <?php
+                                        if(isset( $_POST['accept'])) {
+                                            $sql = "UPDATE Recenties SET Akkoord = '2' WHERE ID = " . mysql_escape_string($_POST['ID']) . " ";
+                                            $stmt = $db->prepare($sql);
+                                            $stmt->execute();
+                                            echo '<meta http-equiv="refresh" content="0" />';
+                                        }
 
+                                        if (isset( $_POST['decline'])) {
+                                            $sql = "UPDATE Recenties SET Akkoord = '1' WHERE ID = " . mysql_escape_string($_POST['ID']) . " ";
+                                            $stmt = $db->prepare($sql);
+                                            $stmt->execute();
+                                            echo '<meta http-equiv="refresh" content="0" />';
+                                        }
+                                        ?>
+                                    </form>
                                 </div>
                             </div>
 
                         <?php
+
                         }
                         ?>
                     </div>
