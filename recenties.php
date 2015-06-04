@@ -70,16 +70,25 @@
 
                         while ($arr = $stmt->fetch(PDO::FETCH_ASSOC)) {
                             if($arr['Akkoord'] == 0) {
-                                $recenties_kleur = "#F2DEDE";
+                                $recenties_kleur = "#ECECEC";
+                                $recenties_border = "#D8D8D8";
                             } else {
-                                $recenties_kleur = "#DFF0D8";
+                                if ($arr['Akkoord'] == 1) {
+                                    $recenties_kleur = "#F2DEDE";
+                                    $recenties_border = "#EBCCD1";
+                                } else {
+                                    if ($arr['Akkoord'] == 2) {
+                                        $recenties_kleur = "#DFF0D8";
+                                        $recenties_border = "#D6E9C6";
+                                    }
+                                }
                             }
                             ?>
                             <div class="items col-xs-12 col-sm-6 col-md-6 col-lg-6 clearfix">
-                                <div class="info-block block-info clearfix" style="background-color:<?php echo $recenties_kleur; ?>">
+                                <div class="info-block block-info clearfix" style="background-color:<?php echo $recenties_kleur; ?>; border: 1px solid <?php echo $recenties_border; ?>;">
                                     <div class="col-md-12" <h4>Naam: <?php echo $arr['Naam']; ?></h4></div>
                                     <div class="col-md-12" <p>Recentie: <?php echo $arr['Recentie']; ?></p></div>
-                                    <div class="col-md-5 pull-right" <p>Rating: <?php echo $arr['Rating']?></p></div>
+                                    <div class="col-md-12" <p>Rating: <?php echo $arr['Rating']?></p></div>
                                     <button class="btn btn-success">Accepteren</button>
                                     <button class="btn btn-danger">Afwijzen</button>
 

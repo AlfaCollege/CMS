@@ -4,6 +4,7 @@
 
 .info-block.block-info.clearfix {
     border-radius: 5px;
+    padding-top: 10px;
 }
 
 .info-block.block-info.clearfix h4 {
