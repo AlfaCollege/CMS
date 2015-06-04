@@ -70,23 +70,50 @@
 
                         while ($arr = $stmt->fetch(PDO::FETCH_ASSOC)) {
                             if($arr['Akkoord'] == 0) {
-                                $recenties_kleur = "#F2DEDE";
+                                $recenties_kleur = "#ECECEC";
+                                $recenties_border = "#D8D8D8";
                             } else {
-                                $recenties_kleur = "#DFF0D8";
+                                if ($arr['Akkoord'] == 1) {
+                                    $recenties_kleur = "#F2DEDE";
+                                    $recenties_border = "#EBCCD1";
+                                } else {
+                                    if ($arr['Akkoord'] == 2) {
+                                        $recenties_kleur = "#DFF0D8";
+                                        $recenties_border = "#D6E9C6";
+                                    }
+                                }
                             }
                             ?>
                             <div class="items col-xs-12 col-sm-6 col-md-6 col-lg-6 clearfix">
-                                <div class="info-block block-info clearfix" style="background-color:<?php echo $recenties_kleur; ?>">
-                                    <h4>Naam: <?php echo $arr['Naam']; ?></h4>
-                                    <p>Recentie: <?php echo $arr['Recentie']; ?></p>
-                                    <p>Rating: <?php echo $arr['Rating']?></p>
-                                    <button class="btn btn-success">Accepteren</button>
-                                    <button class="btn btn-danger">Afwijzen</button>
+                                <div class="info-block block-info clearfix" style="background-color:<?php echo $recenties_kleur; ?>; border: 1px solid <?php echo $recenties_border; ?>;">
+                                    <div class="col-md-12" <h4>Naam: <?php echo $arr['Naam']; ?></h4></div>
+                                    <div class="col-md-12" <p>Recentie: <?php echo $arr['Recentie']; ?></p></div>
+                                    <div class="col-md-12" <p>Rating: <?php echo $arr['Rating']?></p></div>
+                                    <form method="POST">
+                                        <button class="btn btn-success" type="submit" name="accept">Accepteren</button>
+                                        <button class="btn btn-danger" type="submit" name="decline">Afwijzen</button>
+                                        <input type="hidden" name="ID" value="<?php echo $arr['ID']; ?>" >
+                                        <?php
+                                        if(isset( $_POST['accept'])) {
+                                            $sql = "UPDATE Recenties SET Akkoord = '2' WHERE ID = " . mysql_escape_string($_POST['ID']) . " ";
+                                            $stmt = $db->prepare($sql);
+                                            $stmt->execute();
+                                            echo '<meta http-equiv="refresh" content="0" />';
+                                        }
 
+                                        if (isset( $_POST['decline'])) {
+                                            $sql = "UPDATE Recenties SET Akkoord = '1' WHERE ID = " . mysql_escape_string($_POST['ID']) . " ";
+                                            $stmt = $db->prepare($sql);
+                                            $stmt->execute();
+                                            echo '<meta http-equiv="refresh" content="0" />';
+                                        }
+                                        ?>
+                                    </form>
                                 </div>
                             </div>
 
                         <?php
+
                         }
                         ?>
                     </div>
