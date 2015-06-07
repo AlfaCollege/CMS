@@ -60,4 +60,16 @@ class DB {
 		$data = $pdo->prepare($query);
 		$data->execute($values);
 	}
+
+	/*
+		Voegt een query uit voor als de functie er voor nog niet bestaat.
+		!LET OP! Als dit verkeerd gebruikt wordt kan het veel schade toe brengen.
+		DB::query('DROP DATABASE :db', ['db' => 'brains'])
+	*/
+	public function query($query, $values){
+		//
+		$pdo = DB::connect();
+		$data = $pdo->prepare($query);
+		$data->execute($values);
+	}
 }

@@ -1,7 +1,8 @@
 <?php
+include('./libs/database.php');
 
 /*
-	Image request bestand.
+	Text request bestand.
 	Hier wordt met de parameters gedealt en returned de via database opgehaalde data in een json ding.
 */
 header('Content-type: application/JSON');
