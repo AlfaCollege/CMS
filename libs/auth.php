@@ -6,7 +6,7 @@
  * Time: 10:52
  */
 
-include_once('../login.php');
+
 include_once('database.php');
 
 class auth {

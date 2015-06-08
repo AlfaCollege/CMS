@@ -72,14 +72,17 @@
                                         Beschrijving
                                     </th>
                                     <th class="text-center">
+                                        Categorie
+                                    </th>
+                                    <th class="text-center">
                                         Option
                                     </th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr id='addr0' data-id="0" class="hidden">
-                                    <td data-name="prijs">
-
+                                    <td data-name="img">
+                                        <a class="btn btn-success pull-right">Image</a>
 
                                     </td>
                                     <td data-name="name">
@@ -92,6 +95,15 @@
                                     </td>
                                     <td data-name="desc">
                                         <textarea  name="desc" placeholder="Beschrijving" class="form-control"></textarea>
+                                    </td>
+                                    <td data-name="cat" class="dropdown">
+                                        <select>
+                                            <option value="Voorgerecht" >Voorgerecht</option>
+                                            <option value="Hoofdgerecht">Hoofdgerecht</option>
+                                            <option value="Dessert">Desserts</option>
+
+                                        </select>
+
                                     </td>
                                     <td data-name="save">
                                         <button name="save" class="btn btn-info">Opslaan</button>

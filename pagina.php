@@ -74,7 +74,8 @@
                             }
                             ?>
                         </textarea>
-                        <input class="btn btn-success" type="submit" name="update" value="Update">
+                        <br>
+                        <input class="btn btn-success" type="submit" name="update" value="Uploaden">
                     <?php
                         if(isset( $_POST['update'])){
                             $sql = "UPDATE Content SET Text = '" . mysql_escape_string($_POST['editor1']) . "';";

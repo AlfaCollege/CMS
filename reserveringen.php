@@ -39,7 +39,7 @@
     require_once 'assets/header.php';
     ?>
         <!-- /.navbar-collapse -->
-    </nav>
+
 
     <div id="page-wrapper">
 
