@@ -50,7 +50,6 @@ session_start();
                                     </label>
                                 </div>
                             </div>
-                            </div>
                         </div>
                     </div>
                 </form>
@@ -58,6 +57,7 @@ session_start();
         </div>
     </div>
 </div>
+
 
 </body>
 </html>

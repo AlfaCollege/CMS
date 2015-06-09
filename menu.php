@@ -56,7 +56,7 @@
                 </div>
                     <div class="row clearfix">
                         <div class="col-md-12 table-responsive">
-                            <table class="table table-bordered table-hover table-sortable" id="tab_logic">
+                            <table class="table table-bordered table-hover" id="tab_logic">
                                 <thead>
                                 <tr >
                                     <th class="text-center">
@@ -79,40 +79,68 @@
                                     </th>
                                 </tr>
                                 </thead>
+
+                                <?php
+
+                                $db = new PDO("mysql:host=127.0.0.1;dbname=CMS","root","root");
+
+                                $sql = "SELECT * FROM Menu";
+                                $stmt = $db->prepare($sql);
+                                $stmt->execute();
+
+                                $sql2 = "SELECT * FROM Categorie";
+                                $stmt2 = $db->prepare($sql2);
+                                $stmt2->execute();
+
+                                while ($arr = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+
+                                ?>
+
                                 <tbody>
-                                <tr id='addr0' data-id="0" class="hidden">
-                                    <td data-name="img">
-                                        <a class="btn btn-success pull-right">Image</a>
+                                    <form method="POST">
+                                        <input type="hidden" name="ID" value="<?php echo $arr['ID']; ?>" >
+                                        <tr id='addr0' data-id="0">
+                                            <td data-name="img">
+                                                <a class="btn btn-success pull-right">Image</a>
 
-                                    </td>
-                                    <td data-name="name">
-                                        <input type="text" name='item' placeholder='Item' class="form-control"/>
-                                    </td>
-                                    <td data-name="prijs">
-                                        <span class="input-symbol-euro">
-                                            <input type="text" />
-                                   </span>
-                                    </td>
-                                    <td data-name="desc">
-                                        <textarea  name="desc" placeholder="Beschrijving" class="form-control"></textarea>
-                                    </td>
-                                    <td data-name="cat" class="dropdown">
-                                        <select>
-                                            <option value="Voorgerecht" >Voorgerecht</option>
-                                            <option value="Hoofdgerecht">Hoofdgerecht</option>
-                                            <option value="Dessert">Desserts</option>
+                                            </td>
+                                            <td data-name="name">
+                                                <input type="text" name='item' value='<?php echo $arr['Naam']; ?>' class="form-control"/>
+                                            </td>
+                                            <td data-name="prijs">
+                                                <span class="input-symbol-euro">
+                                                    <input type="text" value="<?php echo $arr['Prijs']; ?>"/>
+                                           </span>
+                                            </td>
+                                            <td data-name="desc">
+                                                <textarea  name="desc" class="form-control"><?php echo $arr['Beschrijving']; ?></textarea>
+                                            </td>
+                                            <td data-name="cat" class="dropdown">
+                                                <select>
+                                                    <?php while ($arr2 = $stmt2->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                        <option value="<?php echo $arr2['Naam']; ?>" ><?php echo $arr2['Naam']; ?></option>
+                                                    <?php } ?>
+                                                </select>
 
-                                        </select>
-
-                                    </td>
-                                    <td data-name="save">
-                                        <button name="save" class="btn btn-info">Opslaan</button>
-                                    </td>
-                                    <td data-name="del">
-                                        <button name="del0" class='btn btn-danger btn-danger row-remove'>verwijderen</button>
-                                    </td>
-                                </tr>
+                                            </td>
+                                            <td data-name="save">
+                                                <button name="save" class="btn btn-info">Opslaan</button>
+                                            </td>
+                                            <td data-name="del">
+                                                <button name="del0" class='btn btn-danger btn-danger row-remove'>verwijderen</button>
+                                            </td>
+                                        </tr>
+                                    </form>
                                 </tbody>
+
+                                <?php } ?>
+
+
+
+
+
+
                             </table>
                         </div>
                     </div>
@@ -132,13 +160,12 @@
 <!-- /#wrapper -->
 
 <!-- jQuery -->
-<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
 <script src="js/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
-<!-- menu js -->
-<script src="js/menu.js"></script>
+
 </body>
 
 </html>
