@@ -8,7 +8,7 @@
 session_start();
 
 include_once('database.php');
-
+include_once('Redirect.php');
 class auth
 {
 
@@ -43,6 +43,7 @@ class auth
                 $_SESSION['id'] = $this->user_data['ID'];
                 $_SESSION['username'] = $this->user_data['Naam'];
 
+                Redirect::to('index.php');
                 return true;
             } else {
                 echo('de ingevoerde gegevens kloppen niet.');
