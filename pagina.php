@@ -78,9 +78,11 @@
                         <input class="btn btn-success" type="submit" name="update" value="Uploaden">
                     <?php
                         if(isset( $_POST['update'])){
-                            $sql = "UPDATE Content SET Text = '" . mysql_escape_string($_POST['editor1']) . "';";
+                            $sql = "UPDATE Content SET Text = ?;";
                             $stmt = $db->prepare($sql);
-                            $stmt->execute();
+                            $stmt->execute([
+                                $_POST['editor1']
+                            ]);
 
                             echo '<meta http-equiv="refresh" content="0" />';
                         }
