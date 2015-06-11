@@ -1,14 +1,14 @@
 <?php
 
 /*
-	Image request bestand.
+	Text request bestand.
 	Hier wordt met de parameters gedealt en returned de via database opgehaalde data in een json ding.
 */
 header('Content-type: application/JSON');
 
-$db = new PDO('mysql:dbname=CMS;host=127.0.0.1', 'root', '');
+$db = new PDO('mysql:dbname=DB2169132;host=rdbms.strato.de', 'U2169132', 'B!ub!997');
 
-$query = 'SELECT * FROM Images ';
+$query = 'SELECT * FROM content ';
 $first = false;
 
 if (!empty($_GET)){
@@ -66,7 +66,7 @@ if (!empty($_GET)){
 		$count++;
 
 		foreach($data as $image){
-			$json_data[$count] = [$image['ID'], $image['Path'], $image['Locatie']];
+			$json_data[$count] = [$image['ID'], $image['Text'], $image['Locatie']];
 			$count++;
 		}
 		$count--;
