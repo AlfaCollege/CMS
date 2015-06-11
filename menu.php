@@ -60,7 +60,7 @@
                                 <thead>
                                 <tr >
                                     <th class="text-center">
-                                        Image
+                                        Menu
                                     </th>
                                     <th class="text-center">
                                         Item naam
@@ -84,11 +84,11 @@
 
                                 $db = new PDO("mysql:host=127.0.0.1;dbname=CMS","root","root");
 
-                                $sql = "SELECT * FROM Menu";
+                                $sql = "SELECT * FROM menu";
                                 $stmt = $db->prepare($sql);
                                 $stmt->execute();
 
-                                $sql2 = "SELECT * FROM Categorie";
+                                $sql2 = "SELECT * FROM categorie";
                                 $stmt2 = $db->prepare($sql2);
                                 $stmt2->execute();
 
@@ -102,24 +102,28 @@
                                         <input type="hidden" name="ID" value="<?php echo $arr['ID']; ?>" >
                                         <tr id='addr0' data-id="0">
                                             <td data-name="img">
-                                                <a class="btn btn-success pull-right">Image</a>
+                                                <select>
+                                                    <option>Lunch</option>
+                                                    <option>Diner</option>
+                                                    <option>Dessert</option>
+                                                </select>
 
                                             </td>
                                             <td data-name="name">
-                                                <input type="text" name='item' value='<?php echo $arr['Naam']; ?>' class="form-control"/>
+                                                <input type="text" name='item' value='<?php echo $arr['naam']; ?>' class="form-control"/>
                                             </td>
                                             <td data-name="prijs">
                                                 <span class="input-symbol-euro">
-                                                    <input type="text" value="<?php echo $arr['Prijs']; ?>"/>
+                                                    <input type="text" value="<?php echo $arr['prijs']; ?>"/>
                                            </span>
                                             </td>
                                             <td data-name="desc">
-                                                <textarea  name="desc" class="form-control"><?php echo $arr['Beschrijving']; ?></textarea>
+                                                <textarea  name="desc" class="form-control"><?php echo $arr['beschrijving']; ?></textarea>
                                             </td>
                                             <td data-name="cat" class="dropdown">
                                                 <select>
                                                     <?php while ($arr2 = $stmt2->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                        <option value="<?php echo $arr2['Naam']; ?>" ><?php echo $arr2['Naam']; ?></option>
+                                                        <option value="<?php echo $arr2['naam']; ?>" ><?php echo $arr2['naam']; ?></option>
                                                     <?php } ?>
                                                 </select>
 

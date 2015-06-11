@@ -58,7 +58,7 @@
 
                             $db = new PDO("mysql:host=127.0.0.1;dbname=CMS","root","root");
 
-                            $sql = "SELECT * FROM Content";
+                            $sql = "SELECT * FROM content";
                             $stmt = $db->prepare($sql);
                             $stmt->execute();
 
