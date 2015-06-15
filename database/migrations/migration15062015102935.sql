@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS `reservations` (
 	`last_name` varchar(255),
 	`email` varchar(255),
 	`phone_number` varchar(255),
+	`number_of_persons` int(11),
 	`datetime` datetime,
 	`extras` text
 );
