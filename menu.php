@@ -60,7 +60,7 @@
                                 <thead>
                                 <tr >
                                     <th class="text-center">
-                                        Menu
+                                        Kaart
                                     </th>
                                     <th class="text-center">
                                         Item naam
@@ -88,9 +88,14 @@
                                 $stmt = $db->prepare($sql);
                                 $stmt->execute();
 
-                                $sql2 = "SELECT * FROM categorie";
+                                $sql1 = "SELECT * FROM categorie";
+                                $stmt1 = $db->prepare($sql1);
+                                $stmt1->execute();
+
+                                $sql2 = "SELECT * FROM kaarten";
                                 $stmt2 = $db->prepare($sql2);
                                 $stmt2->execute();
+
 
                                 while ($arr = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
@@ -103,9 +108,10 @@
                                         <tr id='addr0' data-id="0">
                                             <td data-name="img">
                                                 <select>
-                                                    <option>Lunch</option>
-                                                    <option>Diner</option>
-                                                    <option>Dessert</option>
+                                                    <?php
+                                                    while ($arr2 = $stmt2->fetch(PDO::FETCH_ASSOC)) { ?>
+                                                    <option><?php echo $arr2['naam']; ?></option>
+                                                    <?php } ?>
                                                 </select>
 
                                             </td>
@@ -122,8 +128,11 @@
                                             </td>
                                             <td data-name="cat" class="dropdown">
                                                 <select>
-                                                    <?php while ($arr2 = $stmt2->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                        <option value="<?php echo $arr2['naam']; ?>" ><?php echo $arr2['naam']; ?></option>
+                                                    <?php
+                                                    while ($arr3 = $stmt1->fetch(PDO::FETCH_ASSOC)) {
+
+                                                    ?>
+                                                    <option><?php echo $arr3['naam'];?></option>
                                                     <?php } ?>
                                                 </select>
 
