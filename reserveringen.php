@@ -1,3 +1,7 @@
+<?php
+    require_once 'libs/database.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,55 +60,34 @@
                         <table class="table table-hover">
                             <thead>
                             <tr>
-                                <th>Check</th>
-                                <th>Volledige naam</th>
+                                <th>Voornaam</th>
+                                <th>Achternaam</th>
                                 <th>Email adres</th>
                                 <th>Telefoonnummer</th>
                                 <th>Aantal personen</th>
-                                <th>Extra benodigdheden</th>
-
+                                <th>Datum en tijd</th>
+                                <th>Extra's</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <th scope="row"><span class="glyphicon glyphicon-ok"></span></th>
-                                <td>Harry</td>
-                                <td>ja@nee.nl</td>
-                                <td>0612345678</td>
-                                <td>2</td>
-                                <td>None</td>
-                                    <td><div class="controls">
-                                        <button id="singlebutton" name="singlebutton" class="btn btn-primary">Bevestigen</button>
-                                            <button id="singlebutton" name="singlebutton" class="btn btn-danger">Afwijzen</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><span class="glyphicon glyphicon-remove"></span></th>
-                                <td>Martin</td>
-                                <td>ja@nee.nl</td>
-                                <td>0612345678</td>
-                                <td>2</td>
-                                <td>None</td>
-                                <td><div class="controls">
-                                        <button id="singlebutton" name="singlebutton" class="btn btn-primary">Bevestigen</button>
-                                        <button id="singlebutton" name="singlebutton" class="btn btn-danger">Afwijzen</button>
-                                    </div></td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><span class="glyphicon glyphicon-ok"></span></th>
-                                <td>KJ</td>
-                                <td>ja@nee.nl</td>
-                                <td>0612345678</td>
-                                <td>2</td>
-                                <td>None</td>
-                                <td><div class="controls">
-                                        <button id="singlebutton" name="singlebutton" class="btn btn-primary">Bevestigen</button>
-                                        <button id="singlebutton" name="singlebutton" class="btn btn-danger">Afwijzen</button>
-                                    </div></td>
-                                <!-- Button -->
+                                <?php
+                                    $reservations = json_decode(json_encode(DB::select('*', 'reservations')), false);
+                                    // var_dump($reservations);
 
-                            </tr>
+
+                                    foreach($reservations as $reservation) {
+                                        
+                                        echo '<tr>',
+                                            '<td>', $reservation->first_name, '</td>',
+                                            '<td>', $reservation->last_name, '</td>',
+                                            '<td>', $reservation->email, '</td>',
+                                            '<td>', $reservation->phone_number, '</td>',
+                                            '<td>', $reservation->number_of_persons, '</td>',
+                                            '<td>', $reservation->datetime, '</td>',
+                                            '<td>', $reservation->extras, '</td>',
+                                            '</tr>';
+                                    }
+                                ?>
                             </tbody>
                         </table>
 

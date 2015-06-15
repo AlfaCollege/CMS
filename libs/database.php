@@ -2,9 +2,9 @@
 
 class DB {
 	//
-	private function connect(){
+	private static function connect(){
 		//
-		$config = include('../config/database.php');
+		$config = include('./config/database.php');
 
 		$dns 	= $config['type'].':host='.$config['host'].';dbname='.$config['dbname'];
 		try {
@@ -21,7 +21,7 @@ class DB {
 
 		DB::select('*', 'Users', 'id = 0')
 	*/
-	public function select($what, $from, $where = ''){
+	public static function select($what, $from, $where = ''){
 		//
 		$pdo = DB::connect();
 		if ($pdo == false)
