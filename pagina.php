@@ -64,7 +64,7 @@
 
                             while ($arr = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
-                                echo $arr['Text'];
+                                echo $arr['text'];
 
                                 ?>
 

@@ -92,17 +92,17 @@
                                     <form method="POST">
                                         <button class="btn btn-success" type="submit" name="accept">Accepteren</button>
                                         <button class="btn btn-danger" type="submit" name="decline">Afwijzen</button>
-                                        <input type="hidden" name="ID" value="<?php echo $arr['ID']; ?>" >
+                                        <input type="hidden" name="ID" value="<?php echo $arr['id']; ?>" >
                                         <?php
                                         if(isset( $_POST['accept'])) {
-                                            $sql = "UPDATE recenties SET akkoord = '2' WHERE ID = " . mysql_escape_string($_POST['ID']) . " ";
+                                            $sql = "UPDATE recenties SET akkoord = '2' WHERE id = " . mysql_escape_string($_POST['ID']) . " ";
                                             $stmt = $db->prepare($sql);
                                             $stmt->execute();
                                             echo '<meta http-equiv="refresh" content="0" />';
                                         }
 
                                         if (isset( $_POST['decline'])) {
-                                            $sql = "UPDATE recenties SET akkoord = '1' WHERE ID = " . mysql_escape_string($_POST['ID']) . " ";
+                                            $sql = "UPDATE recenties SET akkoord = '1' WHERE id = " . mysql_escape_string($_POST['ID']) . " ";
                                             $stmt = $db->prepare($sql);
                                             $stmt->execute();
                                             echo '<meta http-equiv="refresh" content="0" />';
