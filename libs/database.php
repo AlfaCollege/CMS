@@ -41,7 +41,7 @@ class DB {
 		Een insert functie die gaat als volgt.
 		DB::insert('Gebruiker,Wachtwoord', 'Gebruikers', ['Gebruiker' => 'Naam', 'Wachtwoord' => 'bob'])
 	*/
-	public function insert($what, $into, $values){
+	public static function insert($what, $into, $values){
 		//
 		$pdo = DB::connect();
 		if ($pdo == false)
@@ -66,7 +66,7 @@ class DB {
 		!LET OP! Als dit verkeerd gebruikt wordt kan het veel schade toe brengen.
 		DB::query('DROP DATABASE :db', ['db' => 'brains'])
 	*/
-	public function query($query, $values){
+	public static function query($query, $values){
 		//
 		$pdo = DB::connect();
 		$data = $pdo->prepare($query);
