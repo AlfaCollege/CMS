@@ -67,7 +67,7 @@ class DB {
 		if ($pdo == false)
 			return false;
 
-		$set;
+		$set = "";
 
 		foreach($update as $column=>$content) {
 			$set .= "$column='$content'";
@@ -76,7 +76,7 @@ class DB {
 		$query 	= "UPDATE $table SET $set WHERE $where";
 
 		$data = $pdo->prepare($query);
-		$data->execute($values);
+		$data->execute();
 	}
 
 	/*
