@@ -41,7 +41,7 @@ class DB {
 		Een insert functie die gaat als volgt.
 		DB::insert('Gebruiker,Wachtwoord', 'Gebruikers', ['Gebruiker' => 'Naam', 'Wachtwoord' => 'bob'])
 	*/
-	public static function insert($what, $into, $values, $where=null){
+	public static function insert($what, $into, $values){
 		//
 		$pdo = DB::connect();
 		if ($pdo == false)
@@ -57,9 +57,23 @@ class DB {
 		$query = rtrim($query, ',');
 		$query .= ')';
 
-		if(!is_null($where)) {
-			$query .= ' WHERE ' . $where;
+		$data = $pdo->prepare($query);
+		$data->execute($values);
+	}
+
+
+	public static function update($table, $update, $where) {
+		$pdo = DB::connect();
+		if ($pdo == false)
+			return false;
+
+		$set;
+
+		foreach($update as $column=>$content) {
+			$set .= "$column='$content'";
 		}
+
+		$query 	= "UPDATE $table SET $set WHERE $where";
 
 		$data = $pdo->prepare($query);
 		$data->execute($values);
