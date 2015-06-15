@@ -132,7 +132,11 @@
                                                     while ($arr3 = $stmt1->fetch(PDO::FETCH_ASSOC)) {
 
                                                     ?>
+<<<<<<< HEAD
                                                     <option><?php echo $arr3['naam']; ?></option>
+=======
+                                                    <option><?php echo $arr3['naam'];?></option>
+>>>>>>> feature-reservations
                                                     <?php } ?>
                                                 </select>
 
