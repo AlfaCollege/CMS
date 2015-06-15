@@ -1,3 +1,16 @@
+<?php
+    require_once('libs/database.php');
+
+    if(isset($_POST['update']))
+    {
+
+        DB::update('`content`', ['Text' => $_POST['editor1']], 'ID=' . $_POST['edditing']);
+
+    }
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,41 +65,26 @@
                         WaterGoldFish
                         <small>Content management system</small>
                     </h1>
+
+                    <?php
+
+                        $edditing = (isset($_GET['edit'])) ?: 1;
+                        $content = json_decode(json_encode(DB::select('*', '`content`', 'ID=' . $edditing)), false);
+                        
+                    ?>
+
                     <form method="post">
+                        <input type="hidden" name="edditing" value="<?php echo $edditing; ?>" />
                         <textarea class="ckeditor" name="editor1">
                             <?php
 
-                            $db = new PDO("mysql:host=127.0.0.1;dbname=CMS","root","root");
+                                echo $content[0]->Text;
 
-                            $sql = "SELECT * FROM content";
-                            $stmt = $db->prepare($sql);
-                            $stmt->execute();
-
-                            while ($arr = $stmt->fetch(PDO::FETCH_ASSOC)) {
-
-                                echo $arr['text'];
-
-                                ?>
-
-
-
-                            <?php
-                            }
                             ?>
                         </textarea>
                         <br>
                         <input class="btn btn-success" type="submit" name="update" value="Uploaden">
-                    <?php
-                        if(isset( $_POST['update'])){
-                            $sql = "UPDATE Content SET Text = ?;";
-                            $stmt = $db->prepare($sql);
-                            $stmt->execute([
-                                $_POST['editor1']
-                            ]);
-
-                            echo '<meta http-equiv="refresh" content="0" />';
-                        }
-                    ?>
+                    
                     </form>
 
                 </div>
