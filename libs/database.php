@@ -89,5 +89,7 @@ class DB {
 		$pdo = DB::connect();
 		$data = $pdo->prepare($query);
 		$data->execute($values);
+
+		return $data;
 	}
 }
