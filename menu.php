@@ -6,6 +6,26 @@ if(isset($_GET['delete'])){
 
     DB::query("DELETE FROM `menu` WHERE `id`='" . $_GET['delete'] . "'", []);
 
+}elseif(!empty($_POST)) {
+    $ids = "";
+
+    foreach($_POST as $name=>$content) {
+        $name = explode('-', $name);
+        $id = $name[0];
+        $name = $name[1];
+
+        $insert[$id][$name] = $content;
+    }
+
+    foreach($insert as $id=>$row) {
+
+        if(0 != DB::query("SELECT `id` FROM `menu` WHERE `id`=" . $id, [])->rowCount()) {
+            //Update existing row
+        }else {
+            //Create new row
+        }
+          
+    }
 }
 
 ?>
@@ -64,6 +84,7 @@ if(isset($_GET['delete'])){
                     </h1>
                 </div>
                     <div class="row clearfix">
+                        <form method="POST" action="">
                         <div class="col-md-12 table-responsive">
                             <table class="table table-bordered table-hover" id="tab_logic">
                                 <thead>
@@ -90,7 +111,7 @@ if(isset($_GET['delete'])){
                                 </thead>
 
                                 <tbody>
-
+                                
 
                                 <?php
 
@@ -121,12 +142,9 @@ if(isset($_GET['delete'])){
 
                                     ?>
 
-
-                                    <form method="POST">
-                                        <input type="hidden" name="ID" value="<?php echo $item->id ?>">
                                         <tr id='addr0' data-id="0">
                                             <td data-name="img">
-                                                <select>
+                                                <select name="<?php echo $item->id; ?>-subcategory">
                                                     <?php
                                                         foreach($subcategories as $subcategory) {
                                                     ?>
@@ -142,20 +160,20 @@ if(isset($_GET['delete'])){
 
                                             </td>
                                             <td data-name="name">
-                                                <input type="text" name='item' value='<?php echo $item->naam; ?>'
+                                                <input type="text" name="<?php echo $item->id; ?>-item" value='<?php echo $item->naam; ?>'
                                                        class="form-control"/>
                                             </td>
                                             <td data-name="prijs">
                                                 <span class="input-symbol-euro">
-                                                    <input type="text" value="<?php echo $item->prijs; ?>"/>
+                                                    <input type="text" name="<?php echo $item->id; ?>-price" value="<?php echo $item->prijs; ?>"/>
                                            </span>
                                             </td>
                                             <td data-name="desc">
-                                                <textarea name="desc"
+                                                <textarea name="<?php echo $item->id; ?>-description"
                                                           class="form-control"><?php echo $item->beschrijving; ?></textarea>
                                             </td>
                                             <td data-name="cat" class="dropdown">
-                                                <select>
+                                                <select name="<?php echo $item->id; ?>-category">
 
                                                     <?php
 
@@ -185,19 +203,22 @@ if(isset($_GET['delete'])){
 
                                             </td>
                                         </tr>
-                                    </form>
+                                    
 
 
                                     <?php
                                     }
                                     ?>
+                                    
 
                                 </tbody>
 
                             </table>
                         </div>
                     </div>
-                    <a id="add_row" class="btn btn-default pull-right">Item Toevoegen</a>
+                        <input type="submit" value="Opslaan" class="btn btn-success pull-right"/>
+                        <a id="add_row" class="btn btn-default pull-right">Item Toevoegen</a>
+                    </form>
                 </div>
 
             </div>
@@ -218,6 +239,12 @@ if(isset($_GET['delete'])){
 
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    $('a#add_row').click(function() {
+
+    });
+</script>
 
 </body>
 
