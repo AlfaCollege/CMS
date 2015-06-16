@@ -1,3 +1,15 @@
+<?php
+
+require_once('libs/database.php');
+
+if(isset($_GET['delete'])){
+
+    DB::query("DELETE FROM `menu` WHERE `id`='" . $_GET['delete'] . "'", []);
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -75,88 +87,115 @@
                                         Categorie
                                     </th>
                                     <th class="text-center">
-                                        Option
+                                        Verwijderen
                                     </th>
                                 </tr>
                                 </thead>
 
+                                <tbody>
+
+
                                 <?php
 
-                                $db = new PDO("mysql:host=127.0.0.1;dbname=CMS","root","root");
-
-                                $sql = "SELECT * FROM menu";
-                                $stmt = $db->prepare($sql);
-                                $stmt->execute();
-
-                                $sql1 = "SELECT * FROM categorie";
-                                $stmt1 = $db->prepare($sql1);
-                                $stmt1->execute();
-
-                                $sql2 = "SELECT * FROM kaarten";
-                                $stmt2 = $db->prepare($sql2);
-                                $stmt2->execute();
-
-
-                                while ($arr = $stmt->fetch(PDO::FETCH_ASSOC)) {
+//                                $db = new PDO("mysql:host=127.0.0.1;dbname=CMS","root","root");
+//
+//                                $sql = "SELECT * FROM menu";
+//                                $stmt = $db->prepare($sql);
+//                                $stmt->execute();
+//
+//                                $sql1 = "SELECT * FROM categorie";
+//                                $stmt1 = $db->prepare($sql1);
+//                                $stmt1->execute();
+//
+//                                $sql2 = "SELECT * FROM kaarten";
+//                                $stmt2 = $db->prepare($sql2);
+//                                $stmt2->execute();
 
 
-                                ?>
+                                $items = json_decode(json_encode(DB::select('*', '`menu`')),false);
+                                $subcategories = json_decode(json_encode(DB::select('*', '`kaarten`')),false);
 
-                                <tbody>
+
+                                foreach($items as $item) {
+
+
+//                                while ($arr = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+
+                                    ?>
+
+
                                     <form method="POST">
-                                        <input type="hidden" name="ID" value="<?php echo $arr['ID']; ?>" >
+                                        <input type="hidden" name="ID" value="<?php echo $item->id ?>">
                                         <tr id='addr0' data-id="0">
                                             <td data-name="img">
                                                 <select>
                                                     <?php
-                                                    while ($arr2 = $stmt2->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                    <option><?php echo $arr2['naam']; ?></option>
-                                                    <?php } ?>
+                                                        foreach($subcategories as $subcategory) {
+                                                    ?>
+                                                            <option name="<?php echo $subcategory->naam ;?>" <?php echo ($subcategory->id == $item->kaarten_id) ? 'selected="selected"' : '' ;?>>
+                                                                <?php echo $subcategory->naam; ?>
+                                                            </option>
+
+
+                                                    <?php
+                                                        }
+                                                    ?>
                                                 </select>
 
                                             </td>
                                             <td data-name="name">
-                                                <input type="text" name='item' value='<?php echo $arr['naam']; ?>' class="form-control"/>
+                                                <input type="text" name='item' value='<?php echo $item->naam; ?>'
+                                                       class="form-control"/>
                                             </td>
                                             <td data-name="prijs">
                                                 <span class="input-symbol-euro">
-                                                    <input type="text" value="<?php echo $arr['prijs']; ?>"/>
+                                                    <input type="text" value="<?php echo $item->prijs; ?>"/>
                                            </span>
                                             </td>
                                             <td data-name="desc">
-                                                <textarea  name="desc" class="form-control"><?php echo $arr['beschrijving']; ?></textarea>
+                                                <textarea name="desc"
+                                                          class="form-control"><?php echo $item->beschrijving; ?></textarea>
                                             </td>
                                             <td data-name="cat" class="dropdown">
                                                 <select>
-                                                    <?php
-                                                    while ($arr3 = $stmt1->fetch(PDO::FETCH_ASSOC)) {
 
+                                                    <?php
+
+                                                    $categories = json_decode(json_encode(DB::select('*', '`categorie`', 'kaarten_id="' . $item->kaarten_id . '"')),false);
+
+
+
+                                                    foreach($categories as $category) {
+                                                        ?>
+                                                        <option name="<?php echo $category->naam ;?>" <?php echo ($category->id == $item->categorie_id) ? 'selected="selected"' : '' ;?>>
+                                                            <?php echo $category->naam; ?>
+                                                        </option>
+
+
+                                                    <?php
+                                                    }
                                                     ?>
-<<<<<<< HEAD
-                                                    <option><?php echo $arr3['naam']; ?></option>
-=======
-                                                    <option><?php echo $arr3['naam'];?></option>
->>>>>>> feature-reservations
-                                                    <?php } ?>
+
+
                                                 </select>
 
                                             </td>
-                                            <td data-name="save">
-                                                <button name="save" class="btn btn-info">Opslaan</button>
-                                            </td>
+
                                             <td data-name="del">
-                                                <button name="del0" class='btn btn-danger btn-danger row-remove'>verwijderen</button>
+                                                <a href="?delete=<?php echo $item->id;?>" class='btn btn-danger btn-danger row-remove'>
+                                                    verwijderen
+
                                             </td>
                                         </tr>
                                     </form>
+
+
+                                    <?php
+                                    }
+                                    ?>
+
                                 </tbody>
-
-                                <?php } ?>
-
-
-
-
-
 
                             </table>
                         </div>
