@@ -1,11 +1,24 @@
 <?php
 session_start();
 
+if($_SESSION['logged_in'] === true) {
+    header('Location: index.php');
+}
+
 
 //if(isset($_POST['submit'])) {
 //    $auth = new Auth;
 //    $auth->login();
 //}
+
+if(!empty($_POST)) {
+    if($_POST['username'] == "foo" && $_POST['password'] == "bar") {
+        $_SESSION['logged_in'] = true;
+
+        header('Location: index.php');
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -42,11 +55,11 @@ session_start();
             <div class="wrap">
                 <p class="form-title">
                     Sign In</p>
-                <form action="libs/auth.php" class="login" method="post">
+                <form action="" class="login" method="post">
                     <input name="username" type="text" placeholder="Username" />
                     <input name="password" type="password" placeholder="Password" />
                     <input type="submit" name="submit" value="Sign In" class="btn btn-success btn-sm" />
-                    <div class="remember-forgot">
+                    <!-- <div class="remember-forgot">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="checkbox">
@@ -57,7 +70,7 @@ session_start();
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </form>
             </div>
         </div>
