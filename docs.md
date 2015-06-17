@@ -7,3 +7,11 @@ In dit document kunt u vinden hoe en waarvoor u de functies in het Content Manag
 Een Content Management Systeem (CMS) is een administratiesysteem voor uw website. Hierin kunt u zelf pagina's, menu items, foto's, aanbiedingen, reserveringen en recenties toevoegen, aanpassen en verwijderen.
 
 ##3.0 Pagina's:
+
+###3.1 Pagina selecteren
+Bovenaan de pagina vind u het menu met hierin de namen van de pagina's. Als u hier een pagina selecteerd word de inhoud van de text-editor automatisch aangepast. 
+
+###3.2 Wijzigingen maken aan de geselecteerde pagina
+Als u een pagina heeft geselecteerd kunt u wijzigingen maken aan de pagina met behulp van de text-editor, maar vergeet niet de huidige pagina op te slaan voordat u deze afsluit!
+
+##4.0
