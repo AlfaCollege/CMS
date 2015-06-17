@@ -1,10 +1,54 @@
+<?php
+
+require_once('libs/database.php');
+
+if(isset($_GET['delete'])){
+
+    DB::query("DELETE FROM `menu` WHERE `id`='" . $_GET['delete'] . "'", []);
+
+}
+
+if(!empty($_POST)) {
+    $ids = "";
+
+    foreach($_POST as $name=>$content) {
+        $name = explode('-', $name);
+        $id = $name[0];
+        $name = $name[1];
+
+        $insert[$id][$name] = $content;
+    }
+
+
+    foreach($insert as $id=>$row) {
+
+        if(0 != DB::query("SELECT `id` FROM `menu` WHERE `id`=" . $id, [])->rowCount()) {
+            DB::update('`menu`', $row, '`id`=' . $id);
+        }else {
+            $columns = "";
+
+            foreach($row as $column=>$value){
+                
+                if($columns != "") {
+                    $columns .= ",";
+                }
+
+                $values[$column] = $value;
+                $columns .= $column;
+            }
+
+            DB::insert($columns, '`menu`', $values);
+        }
+          
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <? require("upload.php");
-    ?>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -55,6 +99,7 @@
                     </h1>
                 </div>
                     <div class="row clearfix">
+                        <form method="POST" action="">
                         <div class="col-md-12 table-responsive">
                             <table class="table table-bordered table-hover" id="tab_logic">
                                 <thead>
@@ -75,93 +120,120 @@
                                         Categorie
                                     </th>
                                     <th class="text-center">
-                                        Option
+                                        Verwijderen
                                     </th>
                                 </tr>
                                 </thead>
 
+                                <tbody>
+                                
+
                                 <?php
 
-                                $db = new PDO("mysql:host=127.0.0.1;dbname=CMS","root","root");
-
-                                $sql = "SELECT * FROM menu";
-                                $stmt = $db->prepare($sql);
-                                $stmt->execute();
-
-                                $sql1 = "SELECT * FROM categorie";
-                                $stmt1 = $db->prepare($sql1);
-                                $stmt1->execute();
-
-                                $sql2 = "SELECT * FROM kaarten";
-                                $stmt2 = $db->prepare($sql2);
-                                $stmt2->execute();
-
-
-                                while ($arr = $stmt->fetch(PDO::FETCH_ASSOC)) {
+//                                $db = new PDO("mysql:host=127.0.0.1;dbname=CMS","root","root");
+//
+//                                $sql = "SELECT * FROM menu";
+//                                $stmt = $db->prepare($sql);
+//                                $stmt->execute();
+//
+//                                $sql1 = "SELECT * FROM categorie";
+//                                $stmt1 = $db->prepare($sql1);
+//                                $stmt1->execute();
+//
+//                                $sql2 = "SELECT * FROM kaarten";
+//                                $stmt2 = $db->prepare($sql2);
+//                                $stmt2->execute();
 
 
-                                ?>
+                                $items = json_decode(json_encode(DB::select('*', '`menu`')),false);
+                                $subcategories = json_decode(json_encode(DB::select('*', '`kaarten`')),false);
 
-                                <tbody>
-                                    <form method="POST">
-                                        <input type="hidden" name="ID" value="<?php echo $arr['ID']; ?>" >
-                                        <tr id='addr0' data-id="0">
+
+                                foreach($items as $item) {
+
+
+//                                while ($arr = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+
+                                    ?>
+
+                                        <tr id='<?php echo $item->id; ?>' data-id="0">
                                             <td data-name="img">
-                                                <select>
+                                                <select name="<?php echo $item->id; ?>-kaarten_id">
                                                     <?php
-                                                    while ($arr2 = $stmt2->fetch(PDO::FETCH_ASSOC)) { ?>
-                                                    <option><?php echo $arr2['naam']; ?></option>
-                                                    <?php } ?>
+                                                        foreach($subcategories as $subcategory) {
+                                                    ?>
+                                                            <option value="<?php echo $subcategory->id ;?>" <?php echo ($subcategory->id == $item->kaarten_id) ? 'selected="selected"' : '' ;?>>
+                                                                <?php echo $subcategory->naam; ?>
+                                                            </option>
+
+
+                                                    <?php
+                                                        }
+                                                    ?>
                                                 </select>
 
                                             </td>
                                             <td data-name="name">
-                                                <input type="text" name='item' value='<?php echo $arr['naam']; ?>' class="form-control"/>
+                                                <input type="text" name="<?php echo $item->id; ?>-naam" value='<?php echo $item->naam; ?>'
+                                                       class="form-control"/>
                                             </td>
                                             <td data-name="prijs">
                                                 <span class="input-symbol-euro">
-                                                    <input type="text" value="<?php echo $arr['prijs']; ?>"/>
+                                                    <input type="text" name="<?php echo $item->id; ?>-prijs" value="<?php echo $item->prijs; ?>"/>
                                            </span>
                                             </td>
                                             <td data-name="desc">
-                                                <textarea  name="desc" class="form-control"><?php echo $arr['beschrijving']; ?></textarea>
+                                                <textarea name="<?php echo $item->id; ?>-beschrijving"
+                                                          class="form-control"><?php echo $item->beschrijving; ?></textarea>
                                             </td>
                                             <td data-name="cat" class="dropdown">
-                                                <select>
-                                                    <?php
-                                                    while ($arr3 = $stmt1->fetch(PDO::FETCH_ASSOC)) {
+                                                <select name="<?php echo $item->id; ?>-categorie_id">
 
+                                                    <?php
+
+                                                    $categories = json_decode(json_encode(DB::select('*', '`categorie`', 'kaarten_id="' . $item->kaarten_id . '"')),false);
+
+
+
+                                                    foreach($categories as $category) {
+                                                        ?>
+                                                        <option value="<?php echo $category->id ;?>" <?php echo ($category->id == $item->categorie_id) ? 'selected="selected"' : '' ;?>>
+                                                            <?php echo $category->naam; ?>
+                                                        </option>
+
+
+                                                    <?php
+                                                    }
                                                     ?>
-<<<<<<< HEAD
-                                                    <option><?php echo $arr3['naam']; ?></option>
-=======
-                                                    <option><?php echo $arr3['naam'];?></option>
->>>>>>> feature-reservations
-                                                    <?php } ?>
+
+
                                                 </select>
 
                                             </td>
-                                            <td data-name="save">
-                                                <button name="save" class="btn btn-info">Opslaan</button>
-                                            </td>
+
                                             <td data-name="del">
-                                                <button name="del0" class='btn btn-danger btn-danger row-remove'>verwijderen</button>
+                                                <a href="?delete=<?php echo $item->id;?>" class='btn btn-danger btn-danger row-remove'>
+                                                    verwijderen
+
                                             </td>
                                         </tr>
-                                    </form>
+                                    
+
+
+                                    <?php
+                                    }
+                                    ?>
+                                    
+
                                 </tbody>
-
-                                <?php } ?>
-
-
-
-
-
 
                             </table>
                         </div>
                     </div>
-                    <a id="add_row" class="btn btn-default pull-right">Item Toevoegen</a>
+                        <input type="submit" value="Opslaan" class="btn btn-success pull-right"/>
+                        <a id="add_row" class="btn btn-default pull-right">Item Toevoegen</a>
+                    </form>
                 </div>
 
             </div>
@@ -182,6 +254,52 @@
 
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    var id = parseInt($('#tab_logic tbody tr:last-child').attr('id')) + 1;
+
+    $('a#add_row').click(function() {
+        $('#tab_logic tbody').append('<tr>'+
+'                <td data-name="img">'+
+'                    <select name="'+ id +'-kaarten_id">'+
+''+
+'<?php
+    foreach($subcategories as $subcategory) {
+        echo'<option name="$subcategory->naam">' . $subcategory->naam . '</option>';
+    }
+?>'+
+'                    </select>'+
+''+
+'                </td>'+
+'                <td data-name="name">'+
+'                    <input type="text" name="'+ id +'-naam"class="form-control">'+
+'                </td>'+
+'                <td data-name="prijs">'+
+'                    <span class="input-symbol-euro">'+
+'                        <input type="text" name="'+ id +'-prijs">'+
+'               </span>'+
+'                </td>'+
+'                <td data-name="desc">'+
+'                    <textarea name="'+ id +'-beschrijving" class="form-control"></textarea>'+
+'                </td>'+
+'                <td data-name="cat" class="dropdown">'+
+'                    <select name="'+ id +'-categorie_id">'+
+'                        '+
+''+
+'                    </select>'+
+''+
+'                </td>'+
+''+
+'                <td data-name="del">'+
+'                    <a href="?delete='+ id +'" class="btn btn-danger btn-danger row-remove">'+
+'                        verwijderen'+
+''+
+'                </a></td>'+
+'            </tr>'+
+''+
+'        ');
+    });
+</script>
 
 </body>
 
