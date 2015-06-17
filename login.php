@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+
+//if(isset($_POST['submit'])) {
+//    $auth = new Auth;
+//    $auth->login();
+//}
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +45,7 @@ session_start();
                 <form action="libs/auth.php" class="login" method="post">
                     <input name="username" type="text" placeholder="Username" />
                     <input name="password" type="password" placeholder="Password" />
-                    <input type="submit" value="Sign In" class="btn btn-success btn-sm" />
+                    <input type="submit" name="submit" value="Sign In" class="btn btn-success btn-sm" />
                     <div class="remember-forgot">
                         <div class="row">
                             <div class="col-md-12">
