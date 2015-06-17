@@ -57,12 +57,9 @@ class DB {
 		$query = rtrim($query, ',');
 		$query .= ')';
 
-// die(var_dump($query));
 
 		$data = $pdo->prepare($query);
 		$data->execute($values);
-
-		die(var_dump( $data->errorInfo()));
 	}
 
 

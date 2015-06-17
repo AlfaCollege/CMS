@@ -19,11 +19,8 @@ if(!empty($_POST)) {
         $insert[$id][$name] = $content;
     }
 
-// die(var_dump($insert));
 
     foreach($insert as $id=>$row) {
-
-        // print_r($row);
 
         if(0 != DB::query("SELECT `id` FROM `menu` WHERE `id`=" . $id, [])->rowCount()) {
             DB::update('`menu`', $row, '`id`=' . $id);
