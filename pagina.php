@@ -69,22 +69,37 @@
                     <?php
 
                         $edditing = (isset($_GET['edit'])) ?: 1;
-                        $content = json_decode(json_encode(DB::select('*', '`content`', 'ID=' . $edditing)), false);
-                        
+                        $content = json_decode(json_encode(DB::select('*', '`content`', 'id=' . $edditing)), false);
+                        //$path = json_decode(json_encode(DB::select('*', '`content`','id=' . $path)), false);
+                        $path = DB::select('locatie', 'content');
                     ?>
 
+                    <div>
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a><?php echo $path[0]['locatie']; ?></a>
+                            </li>
+                            <li>
+                                <a><?php echo $path[1]['locatie']?></a>
+                            </li>
+                            <li>
+                                <a><?php echo $path [2]['locatie'] ?></a>
+                            </li>
+                        </ul>
+
+
+                    </div>
                     <form method="post">
                         <input type="hidden" name="edditing" value="<?php echo $edditing; ?>" />
                         <textarea class="ckeditor" name="editor1">
                             <?php
 
-                                echo $content[0]->Text;
+                                echo $content[0]->text;
 
                             ?>
                         </textarea>
                         <br>
                         <input class="btn btn-success" type="submit" name="update" value="Uploaden">
-                    
                     </form>
 
                 </div>

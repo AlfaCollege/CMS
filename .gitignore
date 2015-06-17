@@ -1,5 +1,4 @@
 .DS_Store
 .idea
 .idea/**
-test.php
-config/database.php
+test.phps
