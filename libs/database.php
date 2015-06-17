@@ -57,8 +57,12 @@ class DB {
 		$query = rtrim($query, ',');
 		$query .= ')';
 
+// die(var_dump($query));
+
 		$data = $pdo->prepare($query);
 		$data->execute($values);
+
+		die(var_dump( $data->errorInfo()));
 	}
 
 
@@ -70,6 +74,11 @@ class DB {
 		$set = "";
 
 		foreach($update as $column=>$content) {
+			
+			if($set != "") {
+				$set .= ", ";
+			}
+
 			$set .= "$column='$content'";
 		}
 
@@ -77,6 +86,8 @@ class DB {
 
 		$data = $pdo->prepare($query);
 		$data->execute();
+
+		return $data;
 	}
 
 	/*
