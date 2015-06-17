@@ -4,7 +4,7 @@ class DB {
 	//
 	private static function connect(){
 		//
-		$config = include('../config/database.php');
+		$config = include('./config/database.php');
 
 		$dns 	= $config['type'].':host='.$config['host'].';dbname='.$config['dbname'];
 		try {
