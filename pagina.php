@@ -76,7 +76,7 @@ if($_SESSION['logged_in'] !== true) {
 
                     <?php
 
-                        $edditing = (isset($_GET['edit'])) ?: 1;
+                        $edditing = (isset($_GET['edit'])) ?: $_GET['id'];
                         $content = json_decode(json_encode(DB::select('*', '`content`', 'id=' . $edditing)), false);
                         //$path = json_decode(json_encode(DB::select('*', '`content`','id=' . $path)), false);
                         $path = DB::select('locatie', 'content');
@@ -84,14 +84,14 @@ if($_SESSION['logged_in'] !== true) {
 
                     <div>
                         <ul class="nav nav-tabs">
-                            <li class="active">
-                                <a><?php echo $path[0]['locatie']; ?></a>
+                            <?php if ($_GET['id'] == 1) { echo "<li class='active'>"; } else { echo "<li>"; }?>
+                                <a href="pagina.php?id=1"><?php echo $path[0]['locatie']; ?></a>
                             </li>
-                            <li>
-                                <a><?php echo $path[1]['locatie']?></a>
+                            <?php if ($_GET['id'] == 2) { echo "<li class='active'>"; } else { echo "<li>"; } ?>
+                                <a href="pagina.php?id=2"><?php echo $path[1]['locatie']?></a>
                             </li>
-                            <li>
-                                <a><?php echo $path [2]['locatie'] ?></a>
+                            <?php if ($_GET['id'] == 3) { echo "<li class='active'>"; } else { echo "<li>"; } ?>
+                                <a href="pagina.php?id=3"><?php echo $path [2]['locatie'] ?></a>
                             </li>
                         </ul>
 
