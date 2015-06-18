@@ -1,24 +1,20 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10deb1
+-- version 4.2.10
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Jun 11, 2015 at 09:31 AM
--- Server version: 5.5.43-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.9
+-- Host: localhost:3306
+-- Generation Time: Jun 18, 2015 at 09:21 AM
+-- Server version: 5.5.38
+-- PHP Version: 5.6.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
 --
 -- Database: `CMS`
 --
+CREATE DATABASE IF NOT EXISTS `CMS` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `CMS`;
 
 -- --------------------------------------------------------
 
@@ -26,14 +22,12 @@ SET time_zone = "+00:00";
 -- Table structure for table `artikelen`
 --
 
-CREATE TABLE IF NOT EXISTS `artikelen` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Titel` varchar(45) DEFAULT NULL,
-  `Text` longtext,
-  `Images_ID` int(11) NOT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `fk_Artikelen_Images1_idx` (`Images_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+DROP TABLE IF EXISTS `artikelen`;
+CREATE TABLE `artikelen` (
+`id` int(11) NOT NULL,
+  `text` varchar(45) DEFAULT NULL,
+  `titel` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -41,19 +35,25 @@ CREATE TABLE IF NOT EXISTS `artikelen` (
 -- Table structure for table `categorie`
 --
 
-CREATE TABLE IF NOT EXISTS `categorie` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Naam` varchar(255) NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+DROP TABLE IF EXISTS `categorie`;
+CREATE TABLE `categorie` (
+  `id` int(11) NOT NULL,
+  `naam` varchar(45) DEFAULT NULL,
+  `kaarten_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `categorie`
 --
 
-INSERT INTO `categorie` (`ID`, `Naam`) VALUES
-(1, 'Voorgerecht'),
-(2, 'Hoofdgerecht');
+INSERT INTO `categorie` (`id`, `naam`, `kaarten_id`) VALUES
+(1, 'Tosti''s', 1),
+(2, 'Soep', 1),
+(3, 'Voorgerechten', 2),
+(4, 'Lekker bij de borrel of als voorgerechtje', 2),
+(5, 'Maaltijdsalades', 2),
+(6, 'Hoofdgerechten - Vlees', 2),
+(7, 'Hoofdgerechten - Vis', 2);
 
 -- --------------------------------------------------------
 
@@ -61,19 +61,21 @@ INSERT INTO `categorie` (`ID`, `Naam`) VALUES
 -- Table structure for table `content`
 --
 
-CREATE TABLE IF NOT EXISTS `content` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Locatie` varchar(255) NOT NULL,
-  `Text` longtext NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+DROP TABLE IF EXISTS `content`;
+CREATE TABLE `content` (
+`id` int(11) NOT NULL,
+  `locatie` varchar(45) DEFAULT NULL,
+  `text` longtext
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `content`
 --
 
-INSERT INTO `content` (`ID`, `Locatie`, `Text`) VALUES
-(1, 'index', '<h1>Een korte introductie</h1>\r\n\r\n<p><img alt="restaurant-test" src="http://www.caferestauranthetwittepaard.nl/crhwp/wp-content/uploads/Lunch-kaart-150x150.jpg" style="float:right; height:150px; width:185px" /></p>\r\n\r\n<p>Restaurant Het Witte Paard bevindt zich in het prachtige Westerkwartier gebied, met vele fietsroutes, kleine watertjes en een groot meer.uji</p>\r\n\r\n<p><br />\r\nU kunt bij ons genieten op de twee terrassen zowel aan de voor- zijkant, als ook het grote terras aan de achterkant, waar tevens een groot afgebakend en veilige speelweide is voor de kinderen. Ook kunt u achter het pand gebruik maken van de ruime parkeerplaats.<br />\r\n<br />\r\nHopelijk staat u niets meer in de weg om eens langs te komen of te reserveren, wij zullen u graag hartelijk verwelkomen</p>\r\n\r\n<p>Hallo ik ben wouter en ik houd van els</p>\r\n\r\n<p>&nbsp;</p>\r\n');
+INSERT INTO `content` (`id`, `locatie`, `text`) VALUES
+(1, 'Index', '<p>Halloo dit is een test voor de content hallo fehwhfueijfhuewhuifew</p>\r\n'),
+(2, 'Nieuws', '<p>Hnieuws</p>\r\n'),
+(3, 'Geschiedenis', '<p>geschiedenis</p>\r\n');
 
 -- --------------------------------------------------------
 
@@ -81,20 +83,13 @@ INSERT INTO `content` (`ID`, `Locatie`, `Text`) VALUES
 -- Table structure for table `gebruikers`
 --
 
-CREATE TABLE IF NOT EXISTS `gebruikers` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Naam` varchar(255) NOT NULL,
-  `Wachtwoord` varchar(255) NOT NULL,
-  `Email` varchar(80) DEFAULT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `gebruikers`
---
-
-INSERT INTO `gebruikers` (`ID`, `Naam`, `Wachtwoord`, `Email`) VALUES
-(1, 'admin', 'admin', 'admin@admin.com');
+DROP TABLE IF EXISTS `gebruikers`;
+CREATE TABLE `gebruikers` (
+`id` int(11) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `naam` varchar(45) NOT NULL,
+  `wachtwoord` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -102,19 +97,33 @@ INSERT INTO `gebruikers` (`ID`, `Naam`, `Wachtwoord`, `Email`) VALUES
 -- Table structure for table `images`
 --
 
-CREATE TABLE IF NOT EXISTS `images` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Path` varchar(255) NOT NULL,
-  `Locatie` varchar(255) NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+DROP TABLE IF EXISTS `images`;
+CREATE TABLE `images` (
+`id` int(11) NOT NULL,
+  `locatie` varchar(45) NOT NULL,
+  `path` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `images`
+-- Table structure for table `kaarten`
 --
 
-INSERT INTO `images` (`ID`, `Path`, `Locatie`) VALUES
-(1, '/img/01.png', 'in je moeder');
+DROP TABLE IF EXISTS `kaarten`;
+CREATE TABLE `kaarten` (
+`id` int(11) NOT NULL,
+  `naam` varchar(45) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `kaarten`
+--
+
+INSERT INTO `kaarten` (`id`, `naam`) VALUES
+(1, 'lunch'),
+(2, 'Diner'),
+(3, 'Dessert');
 
 -- --------------------------------------------------------
 
@@ -122,25 +131,22 @@ INSERT INTO `images` (`ID`, `Path`, `Locatie`) VALUES
 -- Table structure for table `menu`
 --
 
-CREATE TABLE IF NOT EXISTS `menu` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Naam` varchar(45) DEFAULT NULL,
-  `Prijs` varchar(45) DEFAULT NULL,
-  `Beschrijving` varchar(45) DEFAULT NULL,
-  `Images_ID` int(11) NOT NULL,
-  `Categorie_ID` int(11) NOT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `fk_Menu_Images_idx` (`Images_ID`),
-  KEY `fk_Menu_Categorie1_idx` (`Categorie_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+DROP TABLE IF EXISTS `menu`;
+CREATE TABLE `menu` (
+`id` int(11) NOT NULL,
+  `beschrijving` longtext,
+  `naam` varchar(45) DEFAULT NULL,
+  `prijs` double NOT NULL,
+  `kaarten_id` int(11) NOT NULL,
+  `categorie_id` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `menu`
 --
 
-INSERT INTO `menu` (`ID`, `Naam`, `Prijs`, `Beschrijving`, `Images_ID`, `Categorie_ID`) VALUES
-(3, 'Sgaap', '10', 'Isch sghaapie fleesh', 1, 1),
-(4, 'Berwout Kruit', '0.50', 'goed gegrild', 1, 1);
+INSERT INTO `menu` (`id`, `beschrijving`, `naam`, `prijs`, `kaarten_id`, `categorie_id`) VALUES
+(9, 'Het lekkerste stukje vlees van het varken', 'Varkens medaillons', 9.95, 2, 6);
 
 -- --------------------------------------------------------
 
@@ -148,66 +154,158 @@ INSERT INTO `menu` (`ID`, `Naam`, `Prijs`, `Beschrijving`, `Images_ID`, `Categor
 -- Table structure for table `recenties`
 --
 
-CREATE TABLE IF NOT EXISTS `recenties` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `naam` varchar(45) DEFAULT NULL,
-  `recentie` longtext,
+DROP TABLE IF EXISTS `recenties`;
+CREATE TABLE `recenties` (
+`id` int(11) NOT NULL,
+  `akkoord` int(1) DEFAULT '0',
   `rating` varchar(45) DEFAULT NULL,
-  `akkoord` tinyint(1) DEFAULT '0',
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+  `recentie` longtext,
+  `naam` varchar(255) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `recenties`
 --
 
-INSERT INTO `recenties` (`ID`, `naam`, `recentie`, `rating`, `akkoord`) VALUES
-(1, 'Martin Elderman', 'Recentie', '8.0', 2),
-(2, 'Wouter Stulp', 'Ik vond het eten wel lekker, service wat minder.', '7.0', 2),
-(3, 'Berwout Kruit', 'Ik had eerder zin in een patatje joppie, maar die hadden ze niet', '5.0', 2),
-(4, 'Klaas-jan Oosterveld', 'Ik vond het eten niet zo lekker.', '6.0', 2),
-(5, 'Johan Vlaar', 'het was net zo goed als de KFC.. nee beter dan.. nee beter hea', '8.0', 2),
-(6, 'Johan Vlaar', 'het was net zo goed als de KFC.. nee beter dan.. nee beter hea', '8.0', 2),
-(7, 'Martin Elderman', 'Recentie', '8.0', 2),
-(8, 'Martin Elderman', 'Recentie', '8.0', 2),
-(9, 'Els Veenstra', 'Mooi..! Lekker eten', '7.0', 2);
+INSERT INTO `recenties` (`id`, `akkoord`, `rating`, `recentie`, `naam`) VALUES
+(1, 2, '5.0', 'Hallo dit is een test', 'Wouter Stulp'),
+(2, 1, '5.0', 'Hallo dit is een test', 'Wouter Stulp'),
+(3, 0, '6.0', 'Hallo ik ben wouter', 'Martin Elderman');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reservering`
+-- Table structure for table `reservations`
 --
 
-CREATE TABLE IF NOT EXISTS `reservering` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Voornaam` varchar(45) DEFAULT NULL,
-  `Achternaam` varchar(45) DEFAULT NULL,
-  `Email` varchar(45) DEFAULT NULL,
-  `Telefoonnummer` int(11) NOT NULL,
-  `Aantal` int(11) NOT NULL,
-  `Extra` longtext,
-  `Datum` date DEFAULT NULL,
-  `Tijd` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+DROP TABLE IF EXISTS `reservations`;
+CREATE TABLE `reservations` (
+`id` int(11) NOT NULL,
+  `first_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `phone_number` varchar(255) DEFAULT NULL,
+  `number_of_persons` int(11) DEFAULT NULL,
+  `datetime` datetime DEFAULT NULL,
+  `extras` text
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `reservations`
+--
+
+INSERT INTO `reservations` (`id`, `first_name`, `last_name`, `email`, `phone_number`, `number_of_persons`, `datetime`, `extras`) VALUES
+(1, 'Wouter', 'Stulp', 'w.stulp@email.com', '1234567890', 4, '2015-06-15 11:11:52', NULL),
+(2, 'Martin', 'Elderman', 'm.elderman@email.com', '1345678900', 5, '2015-06-17 13:25:12', 'ik ben allergies voor (.....)');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `artikelen`
+--
+ALTER TABLE `artikelen`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `categorie`
+--
+ALTER TABLE `categorie`
+ ADD PRIMARY KEY (`id`,`kaarten_id`), ADD KEY `fk_categorie_kaarten_idx` (`kaarten_id`);
+
+--
+-- Indexes for table `content`
+--
+ALTER TABLE `content`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `gebruikers`
+--
+ALTER TABLE `gebruikers`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `images`
+--
+ALTER TABLE `images`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `kaarten`
+--
+ALTER TABLE `kaarten`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `menu`
+--
+ALTER TABLE `menu`
+ ADD PRIMARY KEY (`id`,`kaarten_id`), ADD KEY `fk_menu_kaarten1_idx` (`kaarten_id`);
+
+--
+-- Indexes for table `recenties`
+--
+ALTER TABLE `recenties`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `reservations`
+--
+ALTER TABLE `reservations`
+ ADD UNIQUE KEY `id` (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `artikelen`
+--
+ALTER TABLE `artikelen`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `content`
+--
+ALTER TABLE `content`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `gebruikers`
+--
+ALTER TABLE `gebruikers`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `images`
+--
+ALTER TABLE `images`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `kaarten`
+--
+ALTER TABLE `kaarten`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `menu`
+--
+ALTER TABLE `menu`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT for table `recenties`
+--
+ALTER TABLE `recenties`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `reservations`
+--
+ALTER TABLE `reservations`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `artikelen`
+-- Constraints for table `categorie`
 --
-ALTER TABLE `artikelen`
-  ADD CONSTRAINT `fk_Artikelen_Images1` FOREIGN KEY (`Images_ID`) REFERENCES `images` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `menu`
---
-ALTER TABLE `menu`
-  ADD CONSTRAINT `fk_Menu_Categorie1` FOREIGN KEY (`Categorie_ID`) REFERENCES `categorie` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Menu_Images` FOREIGN KEY (`Images_ID`) REFERENCES `images` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+ALTER TABLE `categorie`
+ADD CONSTRAINT `fk_categorie_kaarten` FOREIGN KEY (`kaarten_id`) REFERENCES `kaarten` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
