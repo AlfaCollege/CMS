@@ -95,6 +95,9 @@ if($_SESSION['logged_in'] !== true) {
                             ?>
                             <div class="items col-xs-12 col-sm-6 col-md-6 col-lg-6 clearfix">
                                 <div class="info-block block-info clearfix" style="background-color:<?php echo $recenties_kleur; ?>; border: 1px solid <?php echo $recenties_border; ?>;">
+                                    <div class="col-md-12">
+                                        <button class=" btn btn-danger pull-right glyphicon glyphicon-remove"</button>
+                                    </div>
                                     <div class="col-md-12" <h4>Naam: <?php echo $arr['naam']; ?></h4></div>
                                     <div class="col-md-12" <p>Recentie: <?php echo $arr['recentie']; ?></p></div>
                                     <div class="col-md-12" <p>Rating: <?php echo $arr['rating']?></p></div>
