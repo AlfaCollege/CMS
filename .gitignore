@@ -2,4 +2,3 @@
 .idea
 .idea/**
 test.php
-config/database.php

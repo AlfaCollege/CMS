@@ -4,7 +4,7 @@ include('../libs/database.php');
 
 $id 		= -1;
 $location 	= -1;
-$options 	= 'Locatie = \'';
+$options 	= 'Locatie LIKE \'';
 
 if (isset($_GET['id']))
 	$id = $_GET['id'];
@@ -47,8 +47,9 @@ foreach ($data as $content) {
 			'Location' 	=> $content['Locatie'],
 			'Text' 		=> $content['Text']
 	];
+	$count++;
 }
 
-$json_data[0] = $count;
+$json_data[0] = $count-1;
 
 echo json_encode($json_data);
