@@ -52,6 +52,9 @@
             <li class="<?php if($currentpage =='recenties'){echo 'active';}?>">
                 <a href="recenties.php"><i class="glyphicon glyphicon-pushpin"></i> Recenties</a>
             </li>
+            <li class="<?php if($currentpage =='nieuws'){echo 'active';}?>">
+                <a href="nieuws.php"><i class="glyphicon glyphicon-pushpin"></i> Nieuws</a>
+            </li>
         </ul>
         </li>
         </ul>
