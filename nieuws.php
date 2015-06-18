@@ -45,6 +45,7 @@ if($_SESSION['logged_in'] !== true) {
     <?php
     $currentpage = nieuws;
     require_once 'assets/header.php';
+    include_once 'libs/database.php';
     ?>
     <!-- /.navbar-collapse -->
 
@@ -74,6 +75,19 @@ if($_SESSION['logged_in'] !== true) {
                         <input class="btn btn-success" type="submit" name="update" value="Uploaden">
                     </form>
 
+
+                    <?php
+                        $arr = DB::select('*', 'artikelen');
+
+                        while ($arr["text"] != 0) {
+                            ?>
+                            <div>
+                                <?php echo $arr["text"]; ?>
+                            </div>
+                            <?php
+                        }
+                        var_dump($arr);
+                    ?>
 
                 </div>
         </div>
