@@ -1,7 +1,7 @@
 <?php
 
-//verwijder alle session variables
-session_unset();
-//destroy sessie
+session_start();
 session_destroy();
+
+header('Location: login.php');
 

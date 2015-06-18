@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if($_SESSION['logged_in'] !== true) {
+    header('Location: login.php');
+    die();
+}
 
 require_once('libs/database.php');
 
@@ -6,7 +12,9 @@ if(isset($_GET['delete'])){
 
     DB::query("DELETE FROM `menu` WHERE `id`='" . $_GET['delete'] . "'", []);
 
-}elseif(!empty($_POST)) {
+}
+
+if(!empty($_POST)) {
     $ids = "";
 
     foreach($_POST as $name=>$content) {
@@ -17,12 +25,25 @@ if(isset($_GET['delete'])){
         $insert[$id][$name] = $content;
     }
 
+
     foreach($insert as $id=>$row) {
 
         if(0 != DB::query("SELECT `id` FROM `menu` WHERE `id`=" . $id, [])->rowCount()) {
-            //Update existing row
+            DB::update('`menu`', $row, '`id`=' . $id);
         }else {
-            //Create new row
+            $columns = "";
+
+            foreach($row as $column=>$value){
+                
+                if($columns != "") {
+                    $columns .= ",";
+                }
+
+                $values[$column] = $value;
+                $columns .= $column;
+            }
+
+            DB::insert($columns, '`menu`', $values);
         }
           
     }
@@ -142,13 +163,13 @@ if(isset($_GET['delete'])){
 
                                     ?>
 
-                                        <tr id='addr0' data-id="0">
+                                        <tr id='<?php echo $item->id; ?>' data-id="0">
                                             <td data-name="img">
-                                                <select name="<?php echo $item->id; ?>-subcategory">
+                                                <select name="<?php echo $item->id; ?>-kaarten_id">
                                                     <?php
                                                         foreach($subcategories as $subcategory) {
                                                     ?>
-                                                            <option name="<?php echo $subcategory->naam ;?>" <?php echo ($subcategory->id == $item->kaarten_id) ? 'selected="selected"' : '' ;?>>
+                                                            <option value="<?php echo $subcategory->id ;?>" <?php echo ($subcategory->id == $item->kaarten_id) ? 'selected="selected"' : '' ;?>>
                                                                 <?php echo $subcategory->naam; ?>
                                                             </option>
 
@@ -160,20 +181,20 @@ if(isset($_GET['delete'])){
 
                                             </td>
                                             <td data-name="name">
-                                                <input type="text" name="<?php echo $item->id; ?>-item" value='<?php echo $item->naam; ?>'
+                                                <input type="text" name="<?php echo $item->id; ?>-naam" value='<?php echo $item->naam; ?>'
                                                        class="form-control"/>
                                             </td>
                                             <td data-name="prijs">
                                                 <span class="input-symbol-euro">
-                                                    <input type="text" name="<?php echo $item->id; ?>-price" value="<?php echo $item->prijs; ?>"/>
+                                                    <input type="text" name="<?php echo $item->id; ?>-prijs" value="<?php echo $item->prijs; ?>"/>
                                            </span>
                                             </td>
                                             <td data-name="desc">
-                                                <textarea name="<?php echo $item->id; ?>-description"
+                                                <textarea name="<?php echo $item->id; ?>-beschrijving"
                                                           class="form-control"><?php echo $item->beschrijving; ?></textarea>
                                             </td>
                                             <td data-name="cat" class="dropdown">
-                                                <select name="<?php echo $item->id; ?>-category">
+                                                <select name="<?php echo $item->id; ?>-categorie_id">
 
                                                     <?php
 
@@ -183,7 +204,7 @@ if(isset($_GET['delete'])){
 
                                                     foreach($categories as $category) {
                                                         ?>
-                                                        <option name="<?php echo $category->naam ;?>" <?php echo ($category->id == $item->categorie_id) ? 'selected="selected"' : '' ;?>>
+                                                        <option value="<?php echo $category->id ;?>" <?php echo ($category->id == $item->categorie_id) ? 'selected="selected"' : '' ;?>>
                                                             <?php echo $category->naam; ?>
                                                         </option>
 
@@ -241,8 +262,48 @@ if(isset($_GET['delete'])){
 <script src="js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-    $('a#add_row').click(function() {
+    var id = parseInt($('#tab_logic tbody tr:last-child').attr('id')) + 1;
 
+    $('a#add_row').click(function() {
+        $('#tab_logic tbody').append('<tr>'+
+'                <td data-name="img">'+
+'                    <select name="'+ id +'-kaarten_id">'+
+''+
+'<?php
+    foreach($subcategories as $subcategory) {
+        echo'<option name="$subcategory->naam">' . $subcategory->naam . '</option>';
+    }
+?>'+
+'                    </select>'+
+''+
+'                </td>'+
+'                <td data-name="name">'+
+'                    <input type="text" name="'+ id +'-naam"class="form-control">'+
+'                </td>'+
+'                <td data-name="prijs">'+
+'                    <span class="input-symbol-euro">'+
+'                        <input type="text" name="'+ id +'-prijs">'+
+'               </span>'+
+'                </td>'+
+'                <td data-name="desc">'+
+'                    <textarea name="'+ id +'-beschrijving" class="form-control"></textarea>'+
+'                </td>'+
+'                <td data-name="cat" class="dropdown">'+
+'                    <select name="'+ id +'-categorie_id">'+
+'                        '+
+''+
+'                    </select>'+
+''+
+'                </td>'+
+''+
+'                <td data-name="del">'+
+'                    <a href="?delete='+ id +'" class="btn btn-danger btn-danger row-remove">'+
+'                        verwijderen'+
+''+
+'                </a></td>'+
+'            </tr>'+
+''+
+'        ');
     });
 </script>
 
