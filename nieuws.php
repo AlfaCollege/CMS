@@ -60,9 +60,22 @@ if($_SESSION['logged_in'] !== true) {
                         WaterGoldFish
                         <small>Content management system</small>
                     </h1>
+                        <h1>Nieuws 1</h1>
+                    <form method="post">
+                        <input type="hidden" name="edditing" value="<?php echo $edditing; ?>" />
+                        <textarea class="ckeditor" name="editor1">
+                            <?php
+
+                            echo $content[0]->text;
+
+                            ?>
+                        </textarea>
+                        <br>
+                        <input class="btn btn-success" type="submit" name="update" value="Uploaden">
+                    </form>
 
 
-            </div>
+                </div>
         </div>
     </div>
     <!-- /.row -->
