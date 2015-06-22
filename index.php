@@ -43,7 +43,7 @@ if($_SESSION['logged_in'] !== true) {
 
     <!-- Navigation -->
     <?php
-        $currentpage = index;
+        $currentpage = 'index';
         require_once 'assets/header.php';
     ?>
         <!-- /.navbar-collapse -->

@@ -91,6 +91,9 @@ CREATE TABLE `gebruikers` (
   `wachtwoord` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+INSERT INTO `gebruikers` (`Naam`,`Wachtwoord`) VALUES 
+('admin', 'd033e22ae348aeb5660fc2140aec35850c4da997');
+
 -- --------------------------------------------------------
 
 --

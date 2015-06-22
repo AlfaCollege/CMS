@@ -1,5 +1,6 @@
 <?php
-session_start();
+include('libs/auth.php');
+@session_start();
 
 if($_SESSION['logged_in'] === true) {
     header('Location: index.php');
@@ -12,9 +13,7 @@ if($_SESSION['logged_in'] === true) {
 //}
 
 if(!empty($_POST)) {
-    if($_POST['username'] == "foo" && $_POST['password'] == "bar") {
-        $_SESSION['logged_in'] = true;
-
+    if(auth::login($_POST['username'], $_POST['password'])) {
         header('Location: index.php');
     }
 }
