@@ -89,24 +89,24 @@ if(isset($_POST['update']))
                         <br>
                         <input class="btn btn-success" type="submit" name="update" value="Uploaden">
                     </form>
+                    <br>
+                    <h3>nieuws</h3>
                     <?php
-                    /*$db = new PDO("mysql:host=127.0.0.1;dbname=CMS","root","root");
-
-                    $sql = "SELECT * FROM artikelen";
-                    $stmt = $db->prepare($sql);
-                    $stmt->execute();*/
 
                     $data   = DB::select('*', 'artikelen');
 
-                    foreach ($data as $key){
-
-                    echo "<div class='panel panel-default'>";
-                    echo "   <div>";
-                    echo "        <p>".$key[1]."</p>";
-                    echo "        <p>".$key[2]."</p>";
-                    echo "    </div>";
-                    echo "</div>";
-                        
+                    foreach ($data as $key){ ?>
+                        <div class="col-md-6">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <p><?php echo $key[2]; ?></p>
+                                </div>
+                                <div class="panel-body">
+                                    <p><?php echo $key[1];?> </p>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
                         }
                         ?>
                 </div>

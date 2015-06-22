@@ -91,7 +91,7 @@ session_start();
                                 }
                             }
                             ?>
-                            <div class="items col-xs-12 col-sm-6 col-md-6 col-lg-6 clearfix">
+                            <div class="items col-md-6 clearfix">
                                 <div class="info-block block-info clearfix" style="background-color:<?php echo $recenties_kleur; ?>; border: 1px solid <?php echo $recenties_border; ?>;">
                                     <div class="col-md-12">
                                         <form method="POST">
