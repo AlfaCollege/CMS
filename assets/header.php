@@ -61,8 +61,3 @@
     </div>
 </nav>
 </body>
-
-
-<?php
-
-var_dump($_SESSION['page']);
