@@ -78,7 +78,6 @@ if($_SESSION['logged_in'] !== true) {
 
                         $edditing = (isset($_GET['edit'])) ?: $_GET['id'];
                         $content = json_decode(json_encode(DB::select('*', '`content`', 'id=' . $edditing)), false);
-                        //$path = json_decode(json_encode(DB::select('*', '`content`','id=' . $path)), false);
                         $path = DB::select('locatie', 'content');
                     ?>
 

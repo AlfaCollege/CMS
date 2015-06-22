@@ -12,7 +12,7 @@ Een Content Management Systeem (CMS) is een administratiesysteem voor uw website
 Bovenaan de pagina vind u het menu met hierin de namen van de pagina's. Als u hier een pagina selecteerd word de inhoud van de text-editor automatisch aangepast. 
 
 ###3.2 Wijzigingen maken aan de geselecteerde pagina
-Als u een pagina heeft geselecteerd kunt u wijzigingen maken aan de pagina met behulp van de text-editor, maar vergeet niet de huidige pagina op te slaan voordat u deze afsluit!
+Als u een pagina heeft geselecteerd kunt u wijzigingen maken aan de pagina met behulp van de text-editor. Vergeet niet de huidige pagina op te slaan door op de knop 'Uploaden'te klikken voordat u deze afsluit!
 
 ##4.0 Menu:
 Wanneer u op het knopje menu klikt ziet u een aantal kopjes. Deze kopjes zijn: Kaart, Item naam, Prijs, Beschrijving, Categorie en verwijderen. Onder het kopje kaart kunt u aangeven met behulp van het kopje bij welke kaart het item hoort. Onder het kopje item naam kunt u invoeren hoe het gerecht heet. Onder het kopje prijs kunt u de prijs invoeren. Onder het kopje beschrijving kunt u een beschrijving invoeren van het gerecht. Onder het kopje categorie kunt u aangeven waar het gerecht in de kaart zal moeten staan. Stel nou voor dat u een gerecht wil verwijderen klik dan op de grote knop verwijderen. Items zijn toe te voegen door op de knop item toevoegen te klikken. Wanneer u klaar bent met alle aanpassing klik dan op de knop Opslaan.

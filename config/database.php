@@ -1,8 +1,8 @@
 <?php
 return [
-	'host' 			=> 'rdbms.strato.de',
+	'host' 			=> 'localhost',
 	'type' 			=> 'mysql',
-	'dbname' 		=> 'DB2169132',
-	'user' 			=> 'U2169132',
-	'password' 		=> 'B!ub!997'
+	'dbname' 		=> 'CMS',
+	'user' 			=> 'root',
+	'password' 		=> 'root'
 ];
