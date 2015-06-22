@@ -94,7 +94,18 @@ session_start();
                             <div class="items col-xs-12 col-sm-6 col-md-6 col-lg-6 clearfix">
                                 <div class="info-block block-info clearfix" style="background-color:<?php echo $recenties_kleur; ?>; border: 1px solid <?php echo $recenties_border; ?>;">
                                     <div class="col-md-12">
-                                        <button type="submit" id="delete" name="delete" class=" btn btn-danger pull-right glyphicon glyphicon-remove"</button>
+                                        <form method="POST">
+                                            <button type="submit" id="delete" name="delete" class=" btn btn-danger pull-right glyphicon glyphicon-remove"></button>
+                                            <input type="hidden" name="ID_Del" value="<?php echo $arr['id']; ?>" >
+                                            <?php
+                                                if(isset( $_POST['delete'])) {
+                                                    $sql = "DELETE FROM recenties WHERE id = " . mysql_escape_string($_POST['ID_Del']) . " ";
+                                                    $stmt = $db->prepare($sql);
+                                                    $stmt->execute();
+                                                    echo '<meta http-equiv="refresh" content="0" />';
+                                                }
+                                            ?>
+                                        </form>
                                     </div>
                                     <div class="col-md-12" <h4>Naam: <?php echo $arr['naam']; ?></h4></div>
                                     <div class="col-md-12" <p>Recentie: <?php echo $arr['recentie']; ?></p></div>
