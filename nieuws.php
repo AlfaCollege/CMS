@@ -90,21 +90,23 @@ if(isset($_POST['update']))
                         <input class="btn btn-success" type="submit" name="update" value="Uploaden">
                     </form>
                     <?php
-                    $db = new PDO("mysql:host=127.0.0.1;dbname=CMS","root","root");
+                    /*$db = new PDO("mysql:host=127.0.0.1;dbname=CMS","root","root");
 
                     $sql = "SELECT * FROM artikelen";
                     $stmt = $db->prepare($sql);
-                    $stmt->execute();
+                    $stmt->execute();*/
 
-                    while ($arr = $stmt->fetch(PDO::FETCH_ASSOC)) {?>
+                    $data   = DB::select('*', 'artikelen');
 
-                    <div class="panel panel-default">
-                        <div>
-                            <p><?php echo $arr['titel']?></p>
-                            <p><?php echo $arr['text']?></p>
-                        </div>
-                    </div>
-                        <?php
+                    foreach ($data as $key){
+
+                    echo "<div class='panel panel-default'>";
+                    echo "   <div>";
+                    echo "        <p>".$key[1]."</p>";
+                    echo "        <p>".$key[2]."</p>";
+                    echo "    </div>";
+                    echo "</div>";
+                        
                         }
                         ?>
                 </div>
