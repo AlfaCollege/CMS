@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2015 at 09:49 AM
+-- Generation Time: Jun 22, 2015 at 10:11 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.24
 
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `content` (
   `ID` int(11) NOT NULL,
   `Locatie` varchar(255) NOT NULL,
   `Text` longtext NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `content`
@@ -73,7 +73,12 @@ INSERT INTO `content` (`ID`, `Locatie`, `Text`) VALUES
 (4, 'HWP.MENU.2', 'Patat met drie keer niks.'),
 (5, 'HWP.MENU.3', 'Tosti met niks.'),
 (6, 'HWP.NIEUWS.1', 'Wij hebben kompleet geen nieuws. Waarom komt U hier lmao'),
-(7, 'HWP.NIEUWS.2', 'Je zou denken dat bij het tweede nieuws stuckje er iets zou staan maar nee.');
+(7, 'HWP.NIEUWS.2', 'Je zou denken dat bij het tweede nieuws stuckje er iets zou staan maar nee.'),
+(8, 'WH.HOME.1', 'Home'),
+(9, 'WH.VISIE.1', 'Iets met een visie ofzow.'),
+(10, 'WH.CONTACT.1', 'Tel. Nr. 0909-3131'),
+(11, 'WH.ROUTE.1', 'Ga links op de rotonde ofzow.'),
+(12, 'WH.OMGEVING.1', 'Het is heel mooi in de omgeving. Met bloemen enzo.');
 
 -- --------------------------------------------------------
 
@@ -261,7 +266,7 @@ ALTER TABLE `categorie`
 -- AUTO_INCREMENT for table `content`
 --
 ALTER TABLE `content`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `gebruikers`
 --
