@@ -6,4 +6,3 @@ unset($_SESSION['UID']);
 unset($_SESSION['Naam']);
 
 header('Location: login.php');
-
