@@ -2,8 +2,10 @@
 include('libs/auth.php');
 @session_start();
 
-if($_SESSION['logged_in'] === true) {
-    header('Location: index.php');
+if (isset($_SESSION['logged_in'])){
+    if($_SESSION['logged_in'] === true) {
+        header('Location: index.php');
+    }
 }
 
 
@@ -32,12 +34,12 @@ if(!empty($_POST)) {
     <title>Watergoldfish-CMS</title>
 
     <!-- Eigen CSS -->
-    <link href="css/login.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet" />
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Custom CSS -->
-    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

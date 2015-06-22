@@ -1,11 +1,24 @@
 <?php
+
 session_start();
 
 if($_SESSION['logged_in'] !== true) {
     header('Location: login.php');
     die();
 }
+
+require_once('libs/database.php');
+
+if(isset($_POST['update']))
+{
+
+    DB::update('`content`', ['Text' => $_POST['editor1']], 'ID=' . $_POST['edditing']);
+
+}
+
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,12 +56,11 @@ if($_SESSION['logged_in'] !== true) {
 
     <!-- Navigation -->
     <?php
-    $currentpage = nieuws;
+    $currentpage = "nieuws";
     require_once 'assets/header.php';
-    include_once 'libs/database.php';
     ?>
     <!-- /.navbar-collapse -->
-
+    </nav>
 
     <div id="page-wrapper">
 
@@ -61,44 +73,51 @@ if($_SESSION['logged_in'] !== true) {
                         WaterGoldFish
                         <small>Content management system</small>
                     </h1>
-                        <h1>Nieuws 1</h1>
+                    <div>
+                        <ul class="nav nav-tabs">
+
+                        </ul>
+
+
+                    </div>
                     <form method="post">
-                        <input type="hidden" name="edditing" value="<?php echo $edditing; ?>" />
                         <textarea class="ckeditor" name="editor1">
                             <?php
-
-                            echo $content[0]->text;
 
                             ?>
                         </textarea>
                         <br>
                         <input class="btn btn-success" type="submit" name="update" value="Uploaden">
                     </form>
-
-
                     <?php
-                        $arr = DB::select('*', 'artikelen');
+                    /*$db = new PDO("mysql:host=127.0.0.1;dbname=CMS","root","root");
 
-                        while ($arr["text"] != 0) {
-                            ?>
-                            <div>
-                                <?php echo $arr["text"]; ?>
-                            </div>
-                            <?php
+                    $sql = "SELECT * FROM artikelen";
+                    $stmt = $db->prepare($sql);
+                    $stmt->execute();*/
+
+                    $data   = DB::select('*', 'artikelen');
+
+                    foreach ($data as $key){
+
+                    echo "<div class='panel panel-default'>";
+                    echo "   <div>";
+                    echo "        <p>".$key[1]."</p>";
+                    echo "        <p>".$key[2]."</p>";
+                    echo "    </div>";
+                    echo "</div>";
+                        
                         }
-                        var_dump($arr);
-                    ?>
-
+                        ?>
                 </div>
+            </div>
+            <!-- /.row -->
+
         </div>
+        <!-- /.container-fluid -->
+
     </div>
-    <!-- /.row -->
-
-</div>
-<!-- /.container-fluid -->
-
-</div>
-<!-- /#page-wrapper -->
+    <!-- /#page-wrapper -->
 
 </div>
 <!-- /#wrapper -->
@@ -107,8 +126,8 @@ if($_SESSION['logged_in'] !== true) {
 <script src="js/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.js"></script>
-
+<script src="js/bootstrap.min.js"></script>
+<script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
 </body>
 
 </html>

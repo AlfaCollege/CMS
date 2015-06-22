@@ -12,13 +12,10 @@ Een Content Management Systeem (CMS) is een administratiesysteem voor uw website
 Bovenaan de pagina vind u het menu met hierin de namen van de pagina's. Als u hier een pagina selecteerd word de inhoud van de text-editor automatisch aangepast. 
 
 ###3.2 Wijzigingen maken aan de geselecteerde pagina
-Als u een pagina heeft geselecteerd kunt u wijzigingen maken aan de pagina met behulp van de text-editor, maar vergeet niet de huidige pagina op te slaan voordat u deze afsluit!
+Als u een pagina heeft geselecteerd kunt u wijzigingen maken aan de pagina met behulp van de text-editor. Vergeet niet de huidige pagina op te slaan door op de knop 'Uploaden'te klikken voordat u deze afsluit!
 
 ##4.0 Menu:
 Op de pagina menu bevind zich alles wat te maken heeft met de menu kaarten. je kunt hier zien het item naam en op welke kaart deze komt te staan, de prijs, de beschrijving en de categorie.
-
-##5.0 Foto´s
-Alle foto's die op de website staan zijn te vervangen.
 
 ##6.0 Aanbiedingen:
 Alle aanbiedingen die op de website staan zijn te vervangen.

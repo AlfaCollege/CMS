@@ -106,10 +106,10 @@ session_start();
                                                 }
                                             ?>
                                         </form>
-                                    </div>
-                                    <div class="col-md-12" <h4>Naam: <?php echo $arr['naam']; ?></h4></div>
-                                    <div class="col-md-12" <p>Recentie: <?php echo $arr['recentie']; ?></p></div>
-                                    <div class="col-md-12" <p>Rating: <?php echo $arr['rating']?></p></div>
+
+                                    <h3>Naam: <?php echo $arr['naam']; ?></h3></div>
+                                    <div class="col-md-12"> <b>Recentie:</b><p> <?php echo $arr['recentie']; ?></p></div>
+                                    <div class="col-md-12"> <b>Rating: <?php echo $arr['rating']?></b></div>
                                     <form method="POST">
                                         <button class="btn btn-success" type="submit" name="accept">Accepteren</button>
                                         <button class="btn btn-danger" type="submit" name="decline">Afwijzen</button>
