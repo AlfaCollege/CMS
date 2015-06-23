@@ -16,7 +16,7 @@
     <ul class="nav navbar-right top-nav">
 
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Welkom Gebruiker<b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Welkom <?php echo (isset($_SESSION['Name'])? 'Niemand' : $_SESSION['Naam']) ?><b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li class="divider"></li>
                 <li>
