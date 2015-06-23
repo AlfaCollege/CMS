@@ -17,38 +17,14 @@ Als u een pagina heeft geselecteerd kunt u wijzigingen maken aan de pagina met b
 ##4.0 Menu:
 Wanneer u op het knopje menu klikt ziet u een aantal kopjes. Deze kopjes zijn: Kaart, Item naam, Prijs, Beschrijving, Categorie en verwijderen. Onder het kopje kaart kunt u aangeven met behulp van het kopje bij welke kaart het item hoort. Onder het kopje item naam kunt u invoeren hoe het gerecht heet. Onder het kopje prijs kunt u de prijs invoeren. Onder het kopje beschrijving kunt u een beschrijving invoeren van het gerecht. Onder het kopje categorie kunt u aangeven waar het gerecht in de kaart zal moeten staan. Stel nou voor dat u een gerecht wil verwijderen klik dan op de grote knop verwijderen. Items zijn toe te voegen door op de knop item toevoegen te klikken. Wanneer u klaar bent met alle aanpassing klik dan op de knop Opslaan.
 
-<<<<<<< Updated upstream
 ##5.0 Foto´s
 Met behulp van de text-editor (zie het kopje pagina's) kunt u foto's toevoegen. Klik op het icoontje afbeelding. Er zal nu een venster worden geopent. Als u een leuke afbeelding heeft gevonden zal u rechtermuisknop moeten klikken en klikken op url kopieren. Daarna moet je bij de titel URL de url die u heeft gekopierd plakken. Hier kunt u alle gegevens invullen voor hoe groot de afbeelding moet zijn, of er een rand moet komen en hoeveel ruimte er moet komen tussen de afbeelding en de rest. in het kopje alternatieve tekst kunt u bij de afbeelding tekst toevoegen.
-=======
-<<<<<<< HEAD
-##5.0 Aanbiedingen:
-Alle aanbiedingen die op de website staan zijn te vervangen.
-=======
-##5.0 Foto´s
-Met behulp van de text-editor (zie het kopje pagina's) kunt u foto's toevoegen. Klik op het icoontje afbeelding. Er zal nu een venster worden geopent. Als u een leuke afbeelding heeft gevonden zal u rechtermuisknop moeten klikken en klikken op url kopieren. Daarna moet je bij de titel URL de url die u heeft gekopierd plakken. Hier kunt u alle gegevens invullen voor hoe groot de afbeelding moet zijn, of er een rand moet komen en hoeveel ruimte er moet komen tussen de afbeelding en de rest. in het kopje alternatieve tekst kunt u bij de afbeelding tekst toevoegen.
->>>>>>> origin/master
->>>>>>> Stashed changes
 
 ##6.0  Reserveringen:
 Op de pagina reserveringen komen alle reserveringen te staan die zijn gemaakt zijn op de website. in de reserveringen komen een aantal gegevens te staan die moeten worden ingevuld door de klant. alleen de extra informatie hoeft niet te worden ingevoerd door de klant.
 
 ##7.0 Recenties:
-<<<<<<< Updated upstream
 Op de pagina recenties staan alle recenties die online zijn gemaakt op de site. Hier komt te staan zijn naam wat hij ervan vond en een cijfer. Je kunt alle recenties zoeken in de zoek balk. Ook kunt u met een knopje recenties accepteren en verwijderen.
 
 ##8.0 Nieuws:
 Op de pagina nieuws kunt u nieuws toevoegen aan de site. In het kleine blokje onder nieuws kunt u nieuws invoeren en als u dan op de knop uploaden klikt word wat u heeft ingevoerd op de site geplaatst.
-=======
-<<<<<<< HEAD
-Op de pagina recenties staan alle recenties die online zijn gemaakt op de site. Hier komt te staan zijn naam wat hij ervan vond en een cijfer.
-
-##8.0 Nieuws:
-Op de pagina nieuws kunt u nieuws toevoegen aan de site.
-=======
-Op de pagina recenties staan alle recenties die online zijn gemaakt op de site. Hier komt te staan zijn naam wat hij ervan vond en een cijfer. Je kunt alle recenties zoeken in de zoek balk. Ook kunt u met een knopje recenties accepteren en verwijderen.
-
-##8.0 Nieuws:
-Op de pagina nieuws kunt u nieuws toevoegen aan de site. In het kleine blokje onder nieuws kunt u nieuws invoeren en als u dan op de knop uploaden klikt word wat u heeft ingevoerd op de site geplaatst.
->>>>>>> origin/master
->>>>>>> Stashed changes
