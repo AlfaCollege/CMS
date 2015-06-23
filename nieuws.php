@@ -20,7 +20,7 @@ if(isset($_POST['update']))
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 
 <head>
 
@@ -70,7 +70,7 @@ if(isset($_POST['update']))
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        WaterGoldFish
+                        Nieuws
                         <small>Content management system</small>
                     </h1>
                     <div>
@@ -81,6 +81,10 @@ if(isset($_POST['update']))
 
                     </div>
                     <form method="post">
+
+                        <input class="form-control" placeholder="Titel">
+
+                        </input>
                         <textarea class="ckeditor" name="editor1">
                             <?php
 

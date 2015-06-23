@@ -62,8 +62,9 @@
                     <fieldset>
 
                         <!-- Form Name -->
-                        <h1 class="page-header">Reservations</h1>
-
+                        <h1 class="page-header">Reserveringen
+                        <small>Content management system</small>
+                        </h1>
                         <table class="table table-hover">
                             <thead>
                             <tr>
