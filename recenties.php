@@ -71,7 +71,7 @@ session_start();
 
                         $db = new PDO("mysql:host=127.0.0.1;dbname=CMS","root","root");
 
-                        $sql = "SELECT * FROM recenties";
+                        $sql = "SELECT * FROM recenties ORDER BY akkoord ASC";
                         $stmt = $db->prepare($sql);
                         $stmt->execute();
 
@@ -80,11 +80,11 @@ session_start();
                                 $recenties_kleur = "#ECECEC";
                                 $recenties_border = "#D8D8D8";
                             } else {
-                                if ($arr['akkoord'] == 1) {
+                                if ($arr['akkoord'] == 2) {
                                     $recenties_kleur = "#F2DEDE";
                                     $recenties_border = "#EBCCD1";
                                 } else {
-                                    if ($arr['akkoord'] == 2) {
+                                    if ($arr['akkoord'] == 1) {
                                         $recenties_kleur = "#DFF0D8";
                                         $recenties_border = "#D6E9C6";
                                     }
@@ -116,14 +116,14 @@ session_start();
                                         <input type="hidden" name="ID" value="<?php echo $arr['id']; ?>" >
                                         <?php
                                         if(isset( $_POST['accept'])) {
-                                            $sql = "UPDATE recenties SET akkoord = '2' WHERE id = " . mysql_escape_string($_POST['ID']) . " ";
+                                            $sql = "UPDATE recenties SET akkoord = '1' WHERE id = " . mysql_escape_string($_POST['ID']) . " ";
                                             $stmt = $db->prepare($sql);
                                             $stmt->execute();
                                             echo '<meta http-equiv="refresh" content="0" />';
                                         }
 
                                         if (isset( $_POST['decline'])) {
-                                            $sql = "UPDATE recenties SET akkoord = '1' WHERE id = " . mysql_escape_string($_POST['ID']) . " ";
+                                            $sql = "UPDATE recenties SET akkoord = '2' WHERE id = " . mysql_escape_string($_POST['ID']) . " ";
                                             $stmt = $db->prepare($sql);
                                             $stmt->execute();
                                             echo '<meta http-equiv="refresh" content="0" />';
