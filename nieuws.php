@@ -12,8 +12,8 @@ require_once('libs/database.php');
 if(isset($_POST['update']))
 {
 
-    DB::update('`content`', ['Text' => $_POST['editor1']], 'ID=' . $_POST['edditing']);
-
+    //DB::insert('Gebruiker,Wachtwoord', 'Gebruikers', ['Gebruiker' => 'Naam', 'Wachtwoord' => 'bob'])
+    DB::insert('Text,Titel', 'artikelen', ['Text' => $_POST['editor1'], 'Titel' => $_POST['titel']]);
 }
 
 
@@ -82,7 +82,7 @@ if(isset($_POST['update']))
                     </div>
                     <form method="post">
 
-                        <input class="form-control" placeholder="Titel">
+                        <input name="titel" class="form-control" placeholder="Titel">
 
                         </input>
                         <textarea class="ckeditor" name="editor1">
@@ -98,10 +98,24 @@ if(isset($_POST['update']))
                     <?php
 
                     $data   = DB::select('*', 'artikelen');
+                    $db = new PDO("mysql:host=127.0.0.1;dbname=CMS","root","root");
 
                     foreach ($data as $key){ ?>
                         <div class="col-md-6">
                             <div class="panel panel-primary">
+                                <form method="POST">
+                                    <button type="submit" id="delete" name="delete" class=" btn btn-danger pull-right glyphicon glyphicon-remove"></button>
+                                    <input type="hidden" name="id" value="<?php echo $key['id'] ?>">
+                                    <?php
+                                    if(isset( $_POST['delete'])) {
+                                        $sql = "DELETE FROM artikelen WHERE id = " . mysql_escape_string($_POST['id']) . " ";
+                                        $stmt = $db->prepare($sql);
+                                        $stmt->execute();
+                                        echo '<meta http-equiv="refresh" content="0" />';
+                                    }
+                                    ?>
+
+                                </form>
                                 <div class="panel-heading">
                                     <p><?php echo $key[2]; ?></p>
                                 </div>

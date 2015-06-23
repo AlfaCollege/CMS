@@ -10,11 +10,9 @@ if($_SESSION['logged_in'] !== true) {
     require_once('libs/database.php');
 
     if(isset($_POST['update']))
-    {
-
-        DB::update('`content`', ['Text' => $_POST['editor1']], 'ID=' . $_POST['edditing']);
-
-    }
+{
+    DB::update('`content`', ['Text' => $_POST['editor1']], 'ID=' . $_POST['edditing']);
+}
 
 
 ?>
