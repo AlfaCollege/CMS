@@ -2,6 +2,7 @@
 return[
     'type' => 'mysql',
     'host' =>'127.0.0.1',
-    'dbname' =>'CMS',
+    'dbname' =>'cms',
     'user' => 'root',
     'password' => 'root',
+];
