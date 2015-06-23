@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `artikelen`
 --
 
-USE `md296091db331475`;
+-- USE `md296091db331475`;
 
 CREATE TABLE IF NOT EXISTS `artikelen` (
   `ID` int(11) NOT NULL,
