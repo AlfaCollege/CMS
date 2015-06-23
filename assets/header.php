@@ -44,10 +44,10 @@
                 <a href="reserveringen.php"><i class=" glyphicon glyphicon-credit-card"></i> Reserveringen</a>
             </li>
             <li class="<?php if($currentpage =='menu'){echo 'active';}?>">
-                <a href="menu.php"><i class="glyphicon glyphicon-pushpin"></i> Menu</a>
+                <a href="menu.php"><i class="glyphicon glyphicon-bookmark"></i> Menu</a>
             </li>
             <li class="<?php if($currentpage =='pagina'){echo 'active';}?>">
-                <a href="pagina.php?id=1"><i class="glyphicon glyphicon-pushpin"></i> Pagina's</a>
+                <a href="pagina.php?id=1"><i class="glyphicon glyphicon-star"></i> Pagina's</a>
             </li>
             <li class="<?php if($currentpage =='recenties'){echo 'active';}?>">
                 <a href="recenties.php"><i class="glyphicon glyphicon-pushpin"></i> Recenties</a>

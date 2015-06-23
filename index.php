@@ -74,6 +74,7 @@ if($_SESSION['logged_in'] !== true) {
                                                 <a href="recenties.php" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-star"></span> <br/>recenties</a>
                                                 <a href="pagina.php" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br/>Pagina's</a>
                                                 <a href="nieuws.php" class="btn btn-primary btn-lg" role="button"><span class="fa fa-newspaper-o"></span> <br/>Nieuws</a>
+
                                             </div>
                                         </div>
                                         <a href="http://www.caferestauranthetwittepaard.nl/" class="btn btn-success btn-lg btn-block" role="button" target="_blank"><span class="glyphicon glyphicon-globe"></span> Website</a>
