@@ -70,7 +70,7 @@ if($_SESSION['logged_in'] !== true) {
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        WaterGoldFish
+                        Pagina's
                         <small>Content management system</small>
                     </h1>
 

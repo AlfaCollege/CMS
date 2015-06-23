@@ -10,13 +10,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php">WaterGoldFish</a>
+        <a class="navbar-brand" href="index.php">HetWittePaard</a>
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
 
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Welkom Gebruiker<b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Welkom <?php echo (isset($_SESSION['Name'])? 'Niemand' : $_SESSION['Naam']) ?><b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li class="divider"></li>
                 <li>
@@ -44,10 +44,10 @@
                 <a href="reserveringen.php"><i class=" glyphicon glyphicon-credit-card"></i> Reserveringen</a>
             </li>
             <li class="<?php if($currentpage =='menu'){echo 'active';}?>">
-                <a href="menu.php"><i class="glyphicon glyphicon-pushpin"></i> Menu</a>
+                <a href="menu.php"><i class="glyphicon glyphicon-bookmark"></i> Menu</a>
             </li>
             <li class="<?php if($currentpage =='pagina'){echo 'active';}?>">
-                <a href="pagina.php?id=1"><i class="glyphicon glyphicon-pushpin"></i> Pagina's</a>
+                <a href="pagina.php?id=1"><i class="glyphicon glyphicon-star"></i> Pagina's</a>
             </li>
             <li class="<?php if($currentpage =='recenties'){echo 'active';}?>">
                 <a href="recenties.php"><i class="glyphicon glyphicon-pushpin"></i> Recenties</a>

@@ -60,7 +60,7 @@ session_start();
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        WaterGoldFish
+                        Recenties
                         <small>Content management system</small>
                     </h1>
                     <div class="col-lg-12">

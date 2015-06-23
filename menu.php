@@ -61,7 +61,7 @@ if(!empty($_POST)) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>WGF-CMS</title>
+    <title>HetWittePaard</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -102,6 +102,7 @@ if(!empty($_POST)) {
                 <div class="col-lg-12">
                     <h1 class="page-header">
                         Menu
+                        <small>Content management system</small>
                     </h1>
                 </div>
                     <div class="row clearfix">
