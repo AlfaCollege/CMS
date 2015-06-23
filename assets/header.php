@@ -20,11 +20,11 @@
             <ul class="dropdown-menu">
                 <li class="divider"></li>
                 <li>
-                    <a href="#"><i class="fa fa-cutlery"></i> Het Witte Paard</a>
+                    <a href="check.php?action=HetWittePaard"><i class="fa fa-cutlery"></i> Het Witte Paard</a>
                 </li>
                 <li class="divider"></li>
                 <li>
-                    <a href="#"><i class="glyphicon glyphicon-knight"></i> Wobbesheerd</a>
+                    <a href="check.php?action=Wobbesheerd"><i class="glyphicon glyphicon-knight"></i> Wobbesheerd</a>
 
                 </li>
                 <li class="divider"></li>
@@ -61,4 +61,3 @@
     </div>
 </nav>
 </body>
-</html>

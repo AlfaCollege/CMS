@@ -5,4 +5,3 @@ return[
     'dbname' =>'CMS',
     'user' => 'root',
     'password' => 'root',
-];
