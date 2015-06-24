@@ -50,10 +50,10 @@
                 <a href="pagina.php?id=1"><i class="glyphicon glyphicon-star"></i> Pagina's</a>
             </li>
             <li class="<?php if($currentpage =='recenties'){echo 'active';}?>">
-                <a href="recenties.php"><i class="glyphicon glyphicon-pushpin"></i> Recenties</a>
+                <a href="recenties.php"><i class="glyphicon glyphicon-comment"></i> Recenties</a>
             </li>
             <li class="<?php if($currentpage =='nieuws'){echo 'active';}?>">
-                <a href="nieuws.php"><i class="glyphicon glyphicon-pushpin"></i> Nieuws</a>
+                <a href="nieuws.php"><i class="fa fa-newspaper-o"></i> Nieuws</a>
             </li>
         </ul>
         </li>
