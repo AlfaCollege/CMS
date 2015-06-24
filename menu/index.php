@@ -30,7 +30,7 @@ if (!isset($_GET['kaart'])){
             $json_data[$count] = [
                 'Naam'          => $menu['naam'],
                 'Prijs'         => $menu['prijs'],
-                'Beschrijving'  => $menu['beschrijving'],
+                'Beschrijving'  => $menu[0],
                 'Kaart'         => $kaart[0]['naam'],
                 'Categorie'     => $category[0]['naam']
             ];
