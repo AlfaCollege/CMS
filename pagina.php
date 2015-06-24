@@ -77,29 +77,41 @@ if($_SESSION['logged_in'] !== true) {
                         $edditing = (isset($_GET['edit'])) ?: $_GET['id'];
                         $content = json_decode(json_encode(DB::select('*', '`content`', 'id=' . $edditing)), false);
                         $path = DB::select('locatie', 'content');
+
+                        if ($_SESSION['page'] == 0){
+                            $data   = DB::select('*', 'content', 'Locatie LIKE \'HWP%\'');
+                        } else {
+                            $data   = DB::select('*', 'content', 'Locatie LIKE \'WH%\'');
+                        }
                     ?>
 
                     <div>
                         <ul class="nav nav-tabs">
-                            <?php if ($_GET['id'] == 1) { echo "<li class='active'>"; } else { echo "<li>"; }?>
-                                <a href="pagina.php?id=1"><?php echo $path[0]['locatie']; ?></a>
-                            </li>
-                            <?php if ($_GET['id'] == 2) { echo "<li class='active'>"; } else { echo "<li>"; } ?>
-                                <a href="pagina.php?id=2"><?php echo $path[1]['locatie']?></a>
-                            </li>
-                            <?php if ($_GET['id'] == 3) { echo "<li class='active'>"; } else { echo "<li>"; } ?>
-                                <a href="pagina.php?id=3"><?php echo $path [2]['locatie'] ?></a>
-                            </li>
+                            <?php
+                                $count = 1;
+                                foreach($data as $title){
+                                    //
+                                    echo '<li ';
+                                    if ($_GET['id'] == $count) {
+                                        echo 'class=\'active\'>';
+                                    } else {
+                                        echo '>';
+                                    }
+                                    echo '<a href=\'pagina.php?id='.$count.'\'>'.$title['Locatie'].'</a>';
+                                    echo '</li>';
+                                    $count++;
+                                }
+                             ?>
                         </ul>
 
 
                     </div>
                     <form method="post">
-                        <input type="hidden" name="edditing" value="<?php echo $edditing; ?>" />
+                        <input type="hidden" name="edditing" value="<?php echo $data[($_GET['id'])-1]['ID'] ?>" />
                         <textarea class="ckeditor" name="editor1">
                             <?php
 
-                                echo $content[0]->text;
+                                echo $data[($_GET['id'])-1]['Text'];
 
                             ?>
                         </textarea>
