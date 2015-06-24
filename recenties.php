@@ -74,17 +74,18 @@ session_start();
                             switch ($recentie['akkoord']){
                                 case 0:
                                     $recenties_kleur    = '#ECECEC';
-                                    $recenties_border   = '$D8D8D8';
+                                    $recenties_border   = '#D8D8D8';
                                 break;
 
-                                case 2:
+                                case 1:
                                     $recenties_kleur    = '#F2DEDE';
                                     $recenties_border   = '#EBCCD1';
                                 break;
 
-                                case 1:
+                                case 2:
                                     $recenties_kleur    = '#DFF0D8';
                                     $recenties_border   = '#D6E9C6';
+                                break;
                             }
                             ?>
                             <div class="items col-md-6 clearfix">
