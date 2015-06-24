@@ -98,7 +98,6 @@ if(isset($_POST['update']))
                     <?php
 
                     $data   = DB::select('*', 'artikelen');
-                    $db = new PDO("mysql:host=127.0.0.1;dbname=CMS","root","root");
 
                     foreach ($data as $key){ ?>
                         <div class="col-md-6">
@@ -108,9 +107,7 @@ if(isset($_POST['update']))
                                     <input type="hidden" name="id" value="<?php echo $key['id'] ?>">
                                     <?php
                                     if(isset( $_POST['delete'])) {
-                                        $sql = "DELETE FROM artikelen WHERE id = " . mysql_escape_string($_POST['id']) . " ";
-                                        $stmt = $db->prepare($sql);
-                                        $stmt->execute();
+                                        DB::query('DELETE FROM artikelen WHERE id = :id', ['id' => $_POST['id']]);
                                         echo '<meta http-equiv="refresh" content="0" />';
                                     }
                                     ?>

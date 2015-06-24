@@ -68,27 +68,23 @@ session_start();
                     </div>
                     <div class="searchable-container">
                         <?php
+                        $data   = DB::query('SELECT * FROM recenties ORDER BY akkoord ASC', []);
 
-                        $db = new PDO("mysql:host=127.0.0.1;dbname=CMS","root","root");
+                        foreach($data as $recentie){
+                            switch ($recentie['akkoord']){
+                                case 0:
+                                    $recenties_kleur    = '#ECECEC';
+                                    $recenties_border   = '$D8D8D8';
+                                break;
 
-                        $sql = "SELECT * FROM recenties ORDER BY akkoord ASC";
-                        $stmt = $db->prepare($sql);
-                        $stmt->execute();
+                                case 2:
+                                    $recenties_kleur    = '#F2DEDE';
+                                    $recenties_border   = '#EBCCD1';
+                                break;
 
-                        while ($arr = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                            if($arr['akkoord'] == 0) {
-                                $recenties_kleur = "#ECECEC";
-                                $recenties_border = "#D8D8D8";
-                            } else {
-                                if ($arr['akkoord'] == 2) {
-                                    $recenties_kleur = "#F2DEDE";
-                                    $recenties_border = "#EBCCD1";
-                                } else {
-                                    if ($arr['akkoord'] == 1) {
-                                        $recenties_kleur = "#DFF0D8";
-                                        $recenties_border = "#D6E9C6";
-                                    }
-                                }
+                                case 1:
+                                    $recenties_kleur    = '#DFF0D8';
+                                    $recenties_border   = '#D6E9C6';
                             }
                             ?>
                             <div class="items col-md-6 clearfix">
@@ -96,36 +92,30 @@ session_start();
                                     <div class="col-md-12">
                                         <form method="POST">
                                             <button type="submit" id="delete" name="delete" class=" btn btn-danger pull-right glyphicon glyphicon-remove"></button>
-                                            <input type="hidden" name="ID_Del" value="<?php echo $arr['id']; ?>" >
+                                            <input type="hidden" name="ID_Del" value="<?php echo $recentie['id']; ?>" >
                                             <?php
                                                 if(isset( $_POST['delete'])) {
-                                                    $sql = "DELETE FROM recenties WHERE id = " . mysql_escape_string($_POST['ID_Del']) . " ";
-                                                    $stmt = $db->prepare($sql);
-                                                    $stmt->execute();
+                                                    DB::query('DELETE FROM recenties WHERE id = :id', ['id' => $_POST['ID_Del']]);
                                                     echo '<meta http-equiv="refresh" content="0" />';
                                                 }
                                             ?>
                                         </form>
 
-                                    <h3>Naam: <?php echo $arr['naam']; ?></h3></div>
-                                    <div class="col-md-12"> <b>Recentie:</b><p> <?php echo $arr['recentie']; ?></p></div>
-                                    <div class="col-md-12"> <b>Rating: <?php echo $arr['rating']?></b></div>
+                                    <h3>Naam: <?php echo $recentie['naam']; ?></h3></div>
+                                    <div class="col-md-12"> <b>Recentie:</b><p> <?php echo $recentie['recentie']; ?></p></div>
+                                    <div class="col-md-12"> <b>Rating: <?php echo $recentie['rating']?></b></div>
                                     <form method="POST">
                                         <button class="btn btn-success" type="submit" name="accept">Accepteren</button>
                                         <button class="btn btn-danger" type="submit" name="decline">Afwijzen</button>
-                                        <input type="hidden" name="ID" value="<?php echo $arr['id']; ?>" >
+                                        <input type="hidden" name="ID" value="<?php echo $recentie['id']; ?>" >
                                         <?php
                                         if(isset( $_POST['accept'])) {
-                                            $sql = "UPDATE recenties SET akkoord = '1' WHERE id = " . mysql_escape_string($_POST['ID']) . " ";
-                                            $stmt = $db->prepare($sql);
-                                            $stmt->execute();
+                                            DB::query('UPDATE recenties SET akkoord = 1 WHERE id = :id', ['id' => $_POST['ID']]);
                                             echo '<meta http-equiv="refresh" content="0" />';
                                         }
 
                                         if (isset( $_POST['decline'])) {
-                                            $sql = "UPDATE recenties SET akkoord = '2' WHERE id = " . mysql_escape_string($_POST['ID']) . " ";
-                                            $stmt = $db->prepare($sql);
-                                            $stmt->execute();
+                                            DB::query('UPDATE recenties SET akkoord = 2 WHERE id = :id', ['id' => $_POST['ID']]);
                                             echo '<meta http-equiv="refresh" content="0" />';
                                         }
                                         ?>
