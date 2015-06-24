@@ -28,10 +28,11 @@ if (!isset($_GET['kaart'])){
             $kaart      = DB::select('*', 'kaarten', 'id = '.$menu['kaarten_id']);
             $category   = DB::select('*', 'categorie', 'id = '.$menu['categorie_id']);
             $json_data[$count] = [
-                'Naam'      => $menu['naam'],
-                'Prijs'     => $menu['prijs'],
-                'Kaart'     => $kaart[0]['naam'],
-                'Categorie' => $category[0]['naam']
+                'Naam'          => $menu['naam'],
+                'Prijs'         => $menu['prijs'],
+                'Beschrijving'  => $menu['beschrijving'],
+                'Kaart'         => $kaart[0]['naam'],
+                'Categorie'     => $category[0]['naam']
             ];
             $count++;
         } unset($menu);
