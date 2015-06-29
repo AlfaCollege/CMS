@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+    if (!isset($_SESSION['Page']))
+        $_SESSION['Page'] = 0;//Dit lost een fout op in de check.php
+?>
 <html lang="en">
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -10,7 +14,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php">HetWittePaard</a>
+        <?php echo ($_SESSION['Page'] == 0)? '<a class="navbar-brand" href="index.php">HetWittePaard</a>' : '<a class="navbar-brand" href="index.php">Wobbesheerd</a>' ?>
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
