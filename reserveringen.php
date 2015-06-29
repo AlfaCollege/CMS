@@ -82,6 +82,7 @@
                                 <?php
                                     $reservations = json_decode(json_encode(DB::select('*', 'reservations')), false);
                                     // var_dump($reservations);
+                                    $db = new PDO("mysql:host=127.0.0.1;dbname=CMS","root","root");
 
 
                                     foreach($reservations as $reservation) {
@@ -94,8 +95,28 @@
                                             '<td>', $reservation->number_of_persons, '</td>',
                                             '<td>', $reservation->datetime, '</td>',
                                             '<td>', $reservation->extras, '</td>',
+                                            '<td>';?>
+
+                                            <form method="POST">
+                                                <button type="submit" id="delete" name="delete" class=" btn btn-danger pull-right glyphicon glyphicon-remove"></button>
+                                                <input type="hidden" name="ID_Del" value="<?php echo $reservation->id; ?>" >
+                                                <?php
+                                                if(isset( $_POST['delete'])) {
+                                                    $sql = "DELETE FROM reservations WHERE id = " . mysql_escape_string($_POST['ID_Del']) . " ";
+                                                    $stmt = $db->prepare($sql);
+                                                    $stmt->execute();
+                                                    echo '<meta http-equiv="refresh" content="0" />';
+                                                }
+                                                ?>
+                                            </form>
+
+
+                                        <?php  '</td>';
                                             '</tr>';
+
+
                                     }
+
                                 ?>
                             </tbody>
                         </table>
