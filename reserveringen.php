@@ -7,6 +7,11 @@
     }
 
     require_once 'libs/database.php';
+
+    if (isset($_GET['ID_Del'])){
+        DB::query('DELETE FROM reservations WHERE id = :id', ['id' => $_GET['ID_Del']]);
+        header('Location: reserveringen.php');
+    }
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +64,7 @@
             <!-- Page Heading -->
             <div class="row">
                 <form class="form-horizontal">
-                    <fieldset>
+                    <!-- <fieldset> -->
 
                         <!-- Form Name -->
                         <h1 class="page-header">Reserveringen
@@ -69,6 +74,7 @@
                         <table class="table table-hover">
                             <thead>
                             <tr>
+                                <th>&nbsp;</th>
                                 <th>Voornaam</th>
                                 <th>Achternaam</th>
                                 <th>Email adres</th>
@@ -82,39 +88,47 @@
                                 <?php
                                     $reservations = json_decode(json_encode(DB::select('*', 'reservations')), false);
                                     // var_dump($reservations);
-                                    $db = new PDO("mysql:host=127.0.0.1;dbname=CMS","root","root");
-
 
                                     foreach($reservations as $reservation) {
-                                        
-                                        echo '<tr>',
-                                            '<td>', $reservation->first_name, '</td>',
-                                            '<td>', $reservation->last_name, '</td>',
-                                            '<td>', $reservation->email, '</td>',
-                                            '<td>', $reservation->phone_number, '</td>',
-                                            '<td>', $reservation->number_of_persons, '</td>',
-                                            '<td>', $reservation->datetime, '</td>',
-                                            '<td>', $reservation->extras, '</td>',
-                                            '<td>';?>
+                                        // echo '<tr>',
+                                        //     '<td>', $reservation->first_name, '</td>',
+                                        //     '<td>', $reservation->last_name, '</td>',
+                                        //     '<td>', $reservation->email, '</td>',
+                                        //     '<td>', $reservation->phone_number, '</td>',
+                                        //     '<td>', $reservation->number_of_persons, '</td>',
+                                        //     '<td>', $reservation->datetime, '</td>',
+                                        //     '<td>', $reservation->extras, '</td>';
+                                        //
+                                        //     echo '<form method="POST">';
+                                        //     echo '<td>';
+                                        //     echo '<input type="hidden" name="ID_Del" value='.$reservation->id.'>';
+                                        //     echo '<button type="submit" id="delete" name="delete" class="btn btn-danger pull-right glyphicon glyphicon-remove"></button>';
+                                        //         if (isset($_POST['ID_Del'])){
+                                        //             DB::query('DELETE FROM reservations WHERE id = :id', ['id' => $_POST['ID_Del']]);
+                                        //             echo '<meta http-equiv="refresh" content="0" />';
+                                        //         }
+                                        //
+                                        //     echo '</td>';
+                                        //     echo '</form>';
+                                        //     echo '</tr>';
 
-                                            <form method="POST">
-                                                <button type="submit" id="delete" name="delete" class=" btn btn-danger pull-right glyphicon glyphicon-remove"></button>
-                                                <input type="hidden" name="ID_Del" value="<?php echo $reservation->id; ?>" >
-                                                <?php
-                                                if(isset( $_POST['delete'])) {
-                                                    $sql = "DELETE FROM reservations WHERE id = " . mysql_escape_string($_POST['ID_Del']) . " ";
-                                                    $stmt = $db->prepare($sql);
-                                                    $stmt->execute();
-                                                    echo '<meta http-equiv="refresh" content="0" />';
-                                                }
-                                                ?>
-                                            </form>
+                                            //rebuild
 
+                                            if (isset($_POST['ID_Del']) || isset($_GET['ID_Del'])){
+                                                //
+                                                if (isset($_POST['ID_Del']))
+                                                    DB::query('DELETE FROM reservations WHERE id = :id', ['id' => $_POST['ID_Del']]);
 
-                                        <?php  '</td>';
-                                            '</tr>';
-
-
+                                                echo '<meta http-equiv="refresh" content="0" />';
+                                            }
+                                            echo '<tr><td><form method=\'POST\'><input type=\'hidden\' name=\'ID_Del\' value='.$reservation->id.'><button type="submit" id="delete" name="delete" class="btn btn-danger pull-right glyphicon glyphicon-remove"></button></form></td>';
+                                            echo '<td>'.$reservation->first_name.'</td>';
+                                            echo '<td>'.$reservation->last_name.'</td>';
+                                            echo '<td>'.$reservation->email.'</td>';
+                                            echo '<td>'.$reservation->phone_number.'</td>';
+                                            echo '<td>'.$reservation->number_of_persons.'</td>';
+                                            echo '<td>'.$reservation->datetime.'</td>';
+                                            echo '<td>'.$reservation->extras.'</td></tr>';
                                     }
 
                                 ?>
@@ -122,7 +136,7 @@
                         </table>
 
 
-                    </fieldset>
+                    <!-- </fieldset> -->
                 </form>
 
             </div>
