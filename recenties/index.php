@@ -22,7 +22,7 @@ $json_data[0] 	= 0;
 foreach ($data as $content) {
 	//
 	$json_data[$count] = [
-			'ID' 			=> $content['ID'],
+			'ID' 			=> $content['id'],
 			'Naam' 			=> $content['naam'],
 			'Recentie' 		=> $content['recentie'],
 			'Rating' 		=> $content['rating']

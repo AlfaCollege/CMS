@@ -8,12 +8,6 @@ if (isset($_SESSION['logged_in'])){
     }
 }
 
-
-//if(isset($_POST['submit'])) {
-//    $auth = new Auth;
-//    $auth->login();
-//}
-
 if(!empty($_POST)) {
     if(auth::login($_POST['username'], $_POST['password'])) {
         header('Location: index.php');

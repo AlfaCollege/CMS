@@ -111,12 +111,12 @@ session_start();
                                         <input type="hidden" name="ID" value="<?php echo $recentie['id']; ?>" >
                                         <?php
                                         if(isset( $_POST['accept'])) {
-                                            DB::query('UPDATE recenties SET akkoord = 1 WHERE id = :id', ['id' => $_POST['ID']]);
+                                            DB::query('UPDATE recenties SET akkoord = 2 WHERE id = :id', ['id' => $_POST['ID']]);
                                             echo '<meta http-equiv="refresh" content="0" />';
                                         }
 
                                         if (isset( $_POST['decline'])) {
-                                            DB::query('UPDATE recenties SET akkoord = 2 WHERE id = :id', ['id' => $_POST['ID']]);
+                                            DB::query('UPDATE recenties SET akkoord = 1 WHERE id = :id', ['id' => $_POST['ID']]);
                                             echo '<meta http-equiv="refresh" content="0" />';
                                         }
                                         ?>

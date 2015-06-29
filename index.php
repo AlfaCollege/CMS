@@ -57,7 +57,8 @@ if($_SESSION['logged_in'] !== true) {
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        HetWittePaard
+                        <?php echo ($_SESSION['page'] == 0)? 'HetWittePaard' : '' ?>
+                        <?php echo ($_SESSION['page'] == 1)? 'Wobbesheerd' : '' ?>
                         <small>Content management system</small>
                     </h1>
                             <div class="col-md-8">
