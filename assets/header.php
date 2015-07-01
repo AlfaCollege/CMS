@@ -46,21 +46,34 @@
             <li class= "<?php if($currentpage =='index'){echo 'active';}?>">
                 <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
             </li>
-            <li class="<?php if($currentpage =='reserveringen'){echo 'active';}?>">
-                <a href="reserveringen.php"><i class=" glyphicon glyphicon-credit-card"></i> Reserveringen</a>
-            </li>
-            <li class="<?php if($currentpage =='menu'){echo 'active';}?>">
-                <a href="menu.php"><i class="glyphicon glyphicon-bookmark"></i> Menu</a>
-            </li>
+
+            <?php if(isset($_SESSION['page']) && $_SESSION['page'] == 0): ?>
+                <li class="<?php if($currentpage =='reserveringen'){echo 'active';}?>">
+                    <a href="reserveringen.php"><i class=" glyphicon glyphicon-credit-card"></i> Reserveringen</a>
+                </li>
+            <?php endif; ?>
+
+            <?php if (isset($_SESSION['page']) && $_SESSION['page'] == 0): ?>
+                <li class="<?php if($currentpage =='menu'){echo 'active';}?>">
+                    <a href="menu.php"><i class="glyphicon glyphicon-bookmark"></i> Menu</a>
+                </li>
+            <?php endif; ?>
+
             <li class="<?php if($currentpage =='pagina'){echo 'active';}?>">
                 <a href="pagina.php?id=1"><i class="glyphicon glyphicon-star"></i> Pagina's</a>
             </li>
-            <li class="<?php if($currentpage =='recenties'){echo 'active';}?>">
-                <a href="recenties.php"><i class="glyphicon glyphicon-comment"></i> Recenties</a>
-            </li>
-            <li class="<?php if($currentpage =='nieuws'){echo 'active';}?>">
-                <a href="nieuws.php"><i class="fa fa-newspaper-o"></i> Nieuws</a>
-            </li>
+
+            <?php if (isset($_SESSION['page']) && $_SESSION['page'] == 0): ?>
+                <li class="<?php if($currentpage =='recenties'){echo 'active';}?>">
+                    <a href="recenties.php"><i class="glyphicon glyphicon-comment"></i> Recenties</a>
+                </li>
+            <?php endif;?>
+
+            <?php if (isset($_SESSION['page']) && $_SESSION['page'] == 0): ?>
+                <li class="<?php if($currentpage =='nieuws'){echo 'active';}?>">
+                    <a href="nieuws.php"><i class="fa fa-newspaper-o"></i> Nieuws</a>
+                </li>
+            <?php endif; ?>
         </ul>
         </li>
         </ul>
