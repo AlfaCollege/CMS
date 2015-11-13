@@ -1,0 +1,34 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^[^.]+\.[^.]+$
+RewriteCond %{HTTPS}s ^on(s)|
+RewriteRule ^ http%1://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+DirectoryIndex index.php
+ErrorDocument 403 /errordocs/403.htm
+ErrorDocument 404 /errordocs/404.htm
+ErrorDocument 500 /errordocs/500.htm
+ErrorDocument 503 /errordocs/503.htm
+Redirect 301 /id/1-Homepage/ /index.php
+Redirect 301 /id/8-Faciliteiten/ /faciliteiten.php
+Redirect 301 /id/9-De-boerderij/ /faciliteiten.php
+Redirect 301 /id/10-Grote-buitenbak/ /faciliteiten.php
+Redirect 301 /id/11-Groepsstal-voor-jonge-paarden/ /faciliteiten.php
+Redirect 301 /id/12-Individuele-stallen-10-boxen/ /faciliteiten.php
+Redirect 301 /id/13-Groepsstal/ /faciliteiten.php
+Redirect 301 /id/14-Paddock/ /faciliteiten.php
+Redirect 301 /id/15-Individuele-stallen-30-boxen/ /faciliteiten.php
+Redirect 301 /id/16-Kleine-buitenbak/ /faciliteiten.php
+Redirect 301 /id/17-Weide/ /faciliteiten.php
+Redirect 301 /id/18-Trailerstalling/ /faciliteiten.php
+Redirect 301 /id/19-Uw-visie/ /uwvisie.php
+Redirect 301 /id/20-Route/ /route.php
+Redirect 301 /id/21-Contact/ /contact.php
+Redirect 301 /id/22-Overdekte-rijhal/ /faciliteiten.php
+Redirect 301 /id/23-Omgeving/ /omgeving.php
+Redirect 301 /id/24-Stapmolen/ /faciliteiten.php
+Redirect 301 /index.php/ /index.php
+Redirect 301 /faciliteiten.php/ /faciliteiten.php
+Redirect 301 /uwvisie.php/ /uwvisie.php
+Redirect 301 /contact.php/ /contact.php
+Redirect 301 /route.php/ /route.php
+Redirect 301 /omgeving.php/ /omgeving.php
+Options -Indexes
