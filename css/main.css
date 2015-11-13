@@ -1,0 +1,314 @@
+html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+    font-family: fantasy;
+   
+
+}
+body {
+     background: url("http://www.caferestauranthetwittepaard.nl/img/555.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.thumbnail {
+    background-color: #EDD29B;
+    border: 1px solid #DDDDDD;
+}
+.thumbnail a {
+      color: black;
+  font-size: 35px;
+}
+.content {
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.navbar-default{
+    background: rgba(139, 0, 0, 0.6);
+    border: 1px solid #78302B;
+}
+.navbar-default a {
+    color: #fff!important;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    background: rgba(139, 0, 0, 0.6);
+    color: #FFC0CB;}
+
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: inherit;
+}
+
+@media screen and (min-width: 768px) {
+    .linkActive {
+        background: rgba(139, 0, 0, 0.6);
+    }
+    #dropdownmenus {
+        background: rgba(139, 0, 0, 0.6);
+    }
+}
+#dropdownmenu {
+    background: rgba(139, 0, 0, 0.0);
+}
+#dropdownmenu:hover {
+    background: rgba(139, 0, 0, 0.3);
+}
+
+ul.nav li.dropdown:hover ul.dropdown-menu {
+    display: block;
+}
+
+form[role="form"] > .form-group *{
+    vertical-align: text-top;
+}
+
+@media (min-width: 768px) {
+    .masthead {
+        background-image: url("http://www.caferestauranthetwittepaard.nl//img/headerfotonieuwste.jpg");
+        height: 484px;
+        padding-top:432px;
+    }
+}
+
+.thumbnail img {
+    height: 250px;
+    width: 100%;
+}
+footer {
+    background-color: transparent !important;
+}
+#footer-holder {
+    color: white;
+    padding: 0;
+    background-color: rgba(139, 0, 0, 0.6);
+    margin-bottom: 0;
+    height: 260px;
+
+}
+
+
+#footer-holder #footer-center, #footer-holder #footer-right {
+    padding-left: 0;
+}
+
+#footer-holder #footer-right {
+    padding-top: 15px;
+}
+
+
+#footer-holder h1 {
+    font-size: medium;
+
+}
+
+#footer-holder a {
+    color: antiquewhite;
+}
+
+#footer-holder #footer-rightimg {
+    margin: 0;
+    padding: 0;
+}
+
+.caret-up {
+    width: 0;
+    height: 0;
+    border-left: 4px solid rgba(0, 0, 0, 0);
+    border-right: 4px solid rgba(0, 0, 0, 0);
+    border-bottom: 4px solid;
+    display: inline-block;
+    margin-left: 2px;
+    vertical-align: middle;
+}
+#copyrightholder {
+
+    margin-bottom: 0;
+}
+
+.panel-transparent {
+    background: none;
+}
+
+.panel-transparent .panel-heading{
+    background: rgba(139, 0, 0, 0.2)!important;
+}
+
+.panel-transparent .panel-body{
+    background: rgba(139, 0, 0, 0.2)!important;
+}
+
+.menuOverzicht .col-md-6 {
+    padding: 0px;
+
+}
+.menuOverzicht .item {
+    border: 1px solid #000;
+    box-shadow: 0px 0px 5px 0px #000;
+    background-color: rgba(255, 255, 255, 0.6);
+    margin: 5px 0px;
+}
+
+.menuOverzicht img {
+    width: 100%;
+    height: 150px;
+}
+.menuOverzicht h2 {
+    font-family: 'Dancing Script', cursive;
+    font-weight: 600;
+}
+
+.menuOverzicht .prijs p {
+    font-size: 30px;
+    font-weight: 800;
+    margin-top: 25px;
+}
+.breadcrumb {
+    background-color: #EDD29B;
+    border: 1px solid;
+}
+.breadcrumb a {
+    color: inherit;
+}
+.carousel-inner > .item > img{
+/*    width:100%;
+    height:360px;*/
+    float: right;
+    width: 400px;
+    height: 300px;
+}
+.recenties .recentiesItem {
+    border:1px solid;
+    margin: 10px 0px;
+}
+div.col-xs-6:nth-child(2) {
+    padding-right: 15px;
+}
+div.col-xs-6:nth-child(3) {
+    padding-left: 15px;
+}
+@media (max-width: 420px){
+    .container h2 {
+        font-size: 22px;
+    }
+    .container h3 {
+        font-size: 15px;
+    }
+    .content {
+        margin-top: 20px;
+    }
+    
+}
+@media (max-width: 520px){
+    .col-xs-6 {
+        width: 100%;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+
+@media (max-width: 768px) {
+    #footer-holder{
+        height: 100%;
+    }
+    .footer {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    div.container:nth-child(1) {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    #footer-right {
+        padding-left: 15px!important;
+    }
+    .reserveren div.col-md-12:nth-child(1),
+    .reserveren div.col-md-12:nth-child(2) {
+        margin-top: 10px;
+    }
+    .reserveren div.col-md-12:nth-child(1) > div:nth-child(2),
+    .reserveren div.col-md-12:nth-child(1) > div:nth-child(2){
+        padding-left: 8px;
+    }
+}
+.no-gutter > [class*='col-'] {
+    padding-right:0;
+    padding-left:0;
+}
+.carousel .item {
+    left: 0 !important;
+      -webkit-transition: opacity .4s; 
+         -moz-transition: opacity .4s;
+           -o-transition: opacity .4s;
+              transition: opacity .4s;
+}
+.carousel-control {
+    background-image: none !important;
+}
+.next.left,
+.prev.right {
+    opacity: 1;
+    z-index: 1;
+}
+.active.left,
+.active.right {
+    opacity: 0;
+    z-index: 2;
+}
+.breadcrumb {
+    margin-right: 15px;
+    margin-left: 15px; 
+}
+
+/* Responsive*/
+
+@media (max-width: 420px){
+    .index > div:nth-child(1),
+    .index div.col-md-6:nth-child(2),
+    .index div.col-md-6:nth-child(3),
+    #copyrightholder,
+    .col-md-7,
+    #informatie{
+        padding-right: 0px!important;
+        padding-left: 0px!important;
+    }
+    .index div.col-md-12:nth-child(1)  {
+        padding:  0px 10px!important;
+    }
+    .form-control {
+        width: 80%!important;
+    }
+    
+    .gastenboek > div:nth-child(1) > div:nth-child(1) {
+        height: 70px;
+    }
+    .img-responsive {
+        margin-bottom: 10px;
+    }
+    .contact div.col-sm-6:nth-child(1) {
+        margin-bottom: 10px;
+    }
+    #informatie {
+        margin-bottom: 10px!important;
+    }
+    .menu div.col-md-4{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    #footer-right{
+        padding-left: 0px!important;
+    }
+
+    .geschiedenis div.col-md-6:nth-child(1),
+    .text-geschiedenis {
+        padding: 0px!important;
+    }
+    img.img-responsive:nth-child(2) {
+        width: 300px;
+    }
+}
